@@ -1,0 +1,3 @@
+install nginx + uwsgi + django + mariadb
+
+usage : bash install_server.sh

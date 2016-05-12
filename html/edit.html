@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>편집</title>
+        <link href="ui/semantic.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/edit.css" rel="stylesheet">
+    </head>
+    <body class="">
+        <nav>
+            <a href='/list'>목록</a>
+            <i class="owner" id="user-email"></i>
+        </nav>
+        <section>
+            <article>
+                <div class="ui top attached tabular menu">
+                    <a class="item active" data-tab="edit">Edit</a>
+                    <a class="item" data-tab="preview">Preview</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="edit">
+                    <div class="ui form">
+                        <div class="field">
+                            <textarea rows="1" id="title"></textarea>
+                        </div>
+                        <div class="field">
+                            <textarea rows="30" id="content"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="preview">
+                    <div class="preview-title">
+                        <h4 id=preview-title>
+                        </h4>
+                    </div>
+                    <div id="preview-content">
+                    </div>
+                </div>
+                <button class="ui primary button" id="save">
+                    Save
+                </button>
+            </article>
+        </section>
+        <footer>
+        </footer>
+	    <script src="assets/js/jquery.min.js"></script>
+	    <script src="assets/js/url.js"></script>
+	    <script src="assets/js/showdown.js"></script>
+	    <script src="ui/semantic.js"></script>
+	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+	    <script src="js/common.js"></script>
+	    <script src="js/user.js"></script>
+	    <script src="js/article.js"></script>
+	    <script src="js/edit.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-77411184-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+	</body>
+</html>

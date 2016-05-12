@@ -1,0 +1,149 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+[contenteditable], [contenteditable]:focus
+{
+    outline: transparent solid 0;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #FFF;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #03A9F4;
+  cursor: pointer;
+  /*
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+  */
+}
+
+.filebox label:hover {
+    background-color: #2196F3;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+#editor {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+#editor .pure-menu {
+    background-color: #0EB0F9;
+    padding-bottom: 1px;
+}
+
+#editor .pure-menu-list .pure-menu-item {
+    background-color: #03A9F4;
+    font-size: 11pt;
+}
+
+#editor .pure-menu-list .pure-menu-item:hover{
+    background-color: #03A9F4;
+    font-size: 11pt;
+}
+
+#editor .pure-menu-list .pure-menu-item ul {
+    width: 80px;
+}
+
+#editor .pure-menu-list .pure-menu-item hr {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+}
+
+#editor .pure-menu-list .pure-menu-item input {
+    position: absolute;
+    height: 100%;
+    width: 80px;
+    outline: 0;
+    opacity: 0;
+    cursor: pointer;
+    text-indent: 99px;
+}
+
+#editor .pure-menu-list .pure-menu-link {
+    color: #FFF;
+}
+
+#editor .pure-menu-active > .pure-menu-link,
+#editor .pure-menu-link:hover,
+#editor .pure-menu-link:focus {
+    background-color: #2196F3
+}
+
+#editor .pure-menu-list .pure-menu-link h2 {
+    font-size: 15pt;
+}
+
+#editor .pure-menu-list .pure-menu-link h2,
+#editor .pure-menu-list .pure-menu-link h3,
+#editor .pure-menu-list .pure-menu-link h4 {
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+.ray.wrap-panels.text-align-left {
+    text-align: left;
+}
+
+.ray.wrap-panels.text-align-center {
+    text-align: center;
+}
+
+.ray.wrap-panels.text-align-justify {
+    text-align: justify;
+}
+
+
+
+.ray.item {
+    margin: 0;
+    padding-top: 15px;
+}
+
+.ray.item.text {
+    line-height: 22pt;
+    letter-spacing: .8px;
+    font-size: 11pt;
+}
+
+.ray.wrap-panels h2.ray.item.text {
+    font-size: 22pt;
+    line-height: 34pt;
+}
+
+.ray.wrap-panels h3.ray.item.text {
+    font-size: 18pt;
+    line-height: 26pt;
+}
+
+.ray.wrap-panels h4.ray.item.text {
+    font-size: 16pt;
+}
+
+.ray.item.image {
+    cursor: text;
+}
+
+.ray.item.image img {
+    cursor: pointer;
+}
+
+.ray.item.text + .ray.item.text {
+    padding-top: 0;
+}

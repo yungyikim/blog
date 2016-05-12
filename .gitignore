@@ -1,0 +1,14 @@
+_pgbackup
+dist
+node_modules
+.DS_Store
+.idea
+/assets/.DS_Store
+/css/.DS_Store
+img/.DS_Store
+/app/api/migrations
+*.pyc
+*.log
+setup/nohup.out
+.vagrant/
+app/db.sqlite3

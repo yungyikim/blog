@@ -1,0 +1,24 @@
+body {
+}
+
+textarea {
+    line-height: 1.5;
+}
+
+nav {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    padding: 10px;
+}
+
+section {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    padding: 10px;
+}

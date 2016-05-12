@@ -1,0 +1,995 @@
+Last login: Tue Apr  5 11:15:54 on ttys005
+W-MACBOOK-03ui-MacBook-Pro:~ w-macbook-03$ cd Dropbox/wisdome/
+W-MACBOOK-03ui-MacBook-Pro:wisdome w-macbook-03$ ls
+Vagrant-Ubuntu-Django	ssh_app_server.sh	ssh_red_server.sh	yungyikim-server.pem
+red-server.pem		ssh_blue_server.sh	ssh_yungyikim_server.sh
+W-MACBOOK-03ui-MacBook-Pro:wisdome w-macbook-03$ ssh -i "red-server.pem" ubuntu@ec2-52-79-148-14.ap-northeast-2.compute.amazonaws.com
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Tue Apr  5 02:51:33 UTC 2016
+
+  System load:  0.65              Processes:           113
+  Usage of /:   10.0% of 7.74GB   Users logged in:     0
+  Memory usage: 6%                IP address for eth0: 172.31.8.137
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Tue Apr  5 02:51:40 2016 from 121.162.174.44
+ubuntu@ip-172-31-8-137:~$ tail -f /var/log/logstash/logstash.log
+{:timestamp=>"2016-04-05T04:41:42.076000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.679000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.727000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T04:56:47.869000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T05:16:02.965000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+
+
+
+
+
+
+
+
+
+
+^C
+ubuntu@ip-172-31-8-137:~$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:~$ tail -f /var/log/logstash/logstash.log
+{:timestamp=>"2016-04-05T04:41:42.076000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.679000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.727000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T04:56:47.869000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T05:16:02.965000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+
+
+
+
+
+
+
+^C
+ubuntu@ip-172-31-8-137:~$ tail -f /var/log/logstash/logstash.log
+{:timestamp=>"2016-04-05T04:41:42.076000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.679000+0000", :message=>"Connection refused", :class=>"Manticore::SocketException", :backtrace=>["/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:37:in `initialize'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:79:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:256:in `call_once'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/manticore-0.5.5-java/lib/manticore/response.rb:153:in `code'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:71:in `perform_request'", "org/jruby/RubyProc.java:281:in `call'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:201:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/http/manticore.rb:54:in `perform_request'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:32:in `hosts'", "org/jruby/ext/timeout/Timeout.java:147:in `timeout'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/sniffer.rb:31:in `hosts'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/elasticsearch-transport-1.0.15/lib/elasticsearch/transport/transport/base.rb:76:in `reload_connections!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:72:in `sniff!'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/ext/thread/Mutex.java:149:in `synchronize'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:60:in `start_sniffing!'", "org/jruby/RubyKernel.java:1479:in `loop'", "/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.5.5-java/lib/logstash/outputs/elasticsearch/http_client.rb:59:in `start_sniffing!'"], :level=>:error}
+{:timestamp=>"2016-04-05T04:41:47.727000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T04:56:47.869000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+{:timestamp=>"2016-04-05T05:16:02.965000+0000", :message=>"SIGTERM received. Shutting down the pipeline.", :level=>:warn}
+^C
+ubuntu@ip-172-31-8-137:~$ tail -f /var/log/kibana/kibana.stdout
+{"type":"response","@timestamp":"2016-04-05T06:05:02+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/commons.style.css?v=9732 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:02+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /bundles/kibana.style.css?v=9732 304 1ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:02+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /bundles/commons.bundle.js?v=9732 304 1ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:03+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/kibana.bundle.js?v=9732 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:03+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/src/ui/public/images/kibana.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/src/ui/public/images/kibana.svg 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:03+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/bundles/src/ui/public/images/elk.ico","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","pragma":"no-cache","cache-control":"no-cache","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","accept":"*/*","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"GET /bundles/src/ui/public/images/elk.ico 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:03+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836303552","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"62","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"POST /elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836303552 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:04+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/index-pattern/_search?fields=","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"39","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":4,"contentLength":9},"message":"POST /elasticsearch/.kibana/index-pattern/_search?fields= 200 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:04+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/.kibana/_mapping/*/field/_source?_=1459836303803","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"GET /elasticsearch/.kibana/_mapping/*/field/_source?_=1459836303803 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:05:04+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/plugins/kibana/settings/sections/about/barcode.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /plugins/kibana/settings/sections/about/barcode.svg 304 1ms - 9.0B"}
+
+
+
+
+
+
+
+
+{"type":"response","@timestamp":"2016-04-05T06:07:15+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/app/kibana","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/"},"res":{"statusCode":200,"responseTime":4,"contentLength":9},"message":"GET /app/kibana 200 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:15+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/commons.style.css?v=9732 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:15+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /bundles/kibana.style.css?v=9732 304 1ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:15+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":9,"contentLength":9},"message":"GET /bundles/commons.bundle.js?v=9732 304 9ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:15+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":3,"contentLength":9},"message":"GET /bundles/kibana.bundle.js?v=9732 304 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/src/ui/public/images/kibana.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":4,"contentLength":9},"message":"GET /bundles/src/ui/public/images/kibana.svg 304 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/bundles/src/ui/public/images/elk.ico","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","pragma":"no-cache","cache-control":"no-cache","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","accept":"*/*","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":5,"contentLength":9},"message":"GET /bundles/src/ui/public/images/elk.ico 200 5ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836436256","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"62","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":4,"contentLength":9},"message":"POST /elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836436256 200 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/index-pattern/_search?fields=","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"39","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"POST /elasticsearch/.kibana/index-pattern/_search?fields= 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/.kibana/_mapping/*/field/_source?_=1459836436527","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2,"contentLength":9},"message":"GET /elasticsearch/.kibana/_mapping/*/field/_source?_=1459836436527 200 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:16+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/plugins/kibana/settings/sections/about/barcode.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":4,"contentLength":9},"message":"GET /plugins/kibana/settings/sections/about/barcode.svg 304 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":3,"contentLength":9},"message":"GET /bundles/kibana.bundle.js?v=9732 304 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/src/ui/public/images/kibana.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /bundles/src/ui/public/images/kibana.svg 304 1ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836453538","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"62","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":4,"contentLength":9},"message":"POST /elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459836453538 200 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/index-pattern/_search?fields=","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"39","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"POST /elasticsearch/.kibana/index-pattern/_search?fields= 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/.kibana/_mapping/*/field/_source?_=1459836453720","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":3,"contentLength":9},"message":"GET /elasticsearch/.kibana/_mapping/*/field/_source?_=1459836453720 200 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:33+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/plugins/kibana/settings/sections/about/barcode.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":1,"contentLength":9},"message":"GET /plugins/kibana/settings/sections/about/barcode.svg 304 1ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:34+00:00","tags":[],"pid":28994,"method":"get","statusCode":404,"req":{"url":"/elasticsearch/logstash-*/_mapping/field/*?_=1459836453958&ignore_unavailable=false&allow_no_indices=false&include_defaults=true","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":404,"responseTime":5,"contentLength":9},"message":"GET /elasticsearch/logstash-*/_mapping/field/*?_=1459836453958&ignore_unavailable=false&allow_no_indices=false&include_defaults=true 404 5ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:07:36+00:00","tags":[],"pid":28994,"method":"get","statusCode":404,"req":{"url":"/elasticsearch/logstash-*/_mapping/field/*?_=1459836455847&ignore_unavailable=false&allow_no_indices=false&include_defaults=true","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":404,"responseTime":3,"contentLength":9},"message":"GET /elasticsearch/logstash-*/_mapping/field/*?_=1459836455847&ignore_unavailable=false&allow_no_indices=false&include_defaults=true 404 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:08+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/app/kibana","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/"},"res":{"statusCode":200,"responseTime":13,"contentLength":9},"message":"GET /app/kibana 200 13ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:08+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":5,"contentLength":9},"message":"GET /bundles/commons.style.css?v=9732 304 5ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:08+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.style.css?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"text/css,*/*;q=0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":3,"contentLength":9},"message":"GET /bundles/kibana.style.css?v=9732 304 3ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:08+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/commons.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","cache-control":"max-age=0","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/commons.bundle.js?v=9732 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:08+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/kibana.bundle.js?v=9732","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"*/*","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/kibana.bundle.js?v=9732 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/src/ui/public/images/kibana.svg","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"image/webp,image/*,*/*;q=0.8","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":18,"contentLength":9},"message":"GET /bundles/src/ui/public/images/kibana.svg 304 18ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459837209418","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"62","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":19,"contentLength":9},"message":"POST /elasticsearch/_mget?timeout=0&ignore_unavailable=true&preference=1459837209418 200 19ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/bundles/src/ui/public/images/elk.ico","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","pragma":"no-cache","cache-control":"no-cache","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","accept":"*/*","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":27,"contentLength":9},"message":"GET /bundles/src/ui/public/images/elk.ico 200 27ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/index-pattern/_search?fields=","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"39","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":4,"contentLength":9},"message":"POST /elasticsearch/.kibana/index-pattern/_search?fields= 200 4ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/src/ui/public/images/elk.ico","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","accept":"*/*","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-none-match":"\"6e2a38f39043263e2b4385f796027d2318c3991c-gzip\"","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":304,"responseTime":2,"contentLength":9},"message":"GET /bundles/src/ui/public/images/elk.ico 304 2ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:09+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/.kibana/_mapping/*/field/_source?_=1459837209709","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":5,"contentLength":9},"message":"GET /elasticsearch/.kibana/_mapping/*/field/_source?_=1459837209709 200 5ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:10+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/logstash-*/_mapping/field/*?_=1459837209817&ignore_unavailable=false&allow_no_indices=false&include_defaults=true","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":241,"contentLength":9},"message":"GET /elasticsearch/logstash-*/_mapping/field/*?_=1459837209817&ignore_unavailable=false&allow_no_indices=false&include_defaults=true 200 241ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:10+00:00","tags":[],"pid":28994,"method":"get","statusCode":304,"req":{"url":"/bundles/node_modules/font-awesome/fonts/fontawesome-webfont.woff2","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","origin":"http://52.79.148.14:5601","accept":"*/*","referer":"http://52.79.148.14:5601/bundles/commons.style.css?v=9732","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2","if-modified-since":"Thu, 10 Mar 2016 14:57:02 GMT"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/bundles/commons.style.css?v=9732"},"res":{"statusCode":304,"responseTime":37,"contentLength":9},"message":"GET /bundles/node_modules/font-awesome/fonts/fontawesome-webfont.woff2 304 37ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:18+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":15,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 15ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:18+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":25,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 25ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:18+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":38,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 38ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:58+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":50,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 50ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:58+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":17,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 17ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:20:58+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"26","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":14,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 14ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"108","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":349,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 349ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"108","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":341,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 341ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"108","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":344,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 344ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":18,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 18ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":21,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 21ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:01+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":20,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 20ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":35,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 35ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":28,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 28ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":22,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 22ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":30,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 30ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":39,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 39ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":32,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 32ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":24,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 24ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":17,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 17ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":17,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 17ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":12,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 12ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":20,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 20ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":35,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 35ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":157,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 157ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":38,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 38ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":42,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 42ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"115","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":27,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 27ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"115","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":64,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 64ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:02+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"115","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":48,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 48ms - 9.0B"}
+{"type":"log","@timestamp":"2016-04-05T06:22:01+00:00","tags":["status","plugin:elasticsearch","error"],"pid":28994,"name":"plugin:elasticsearch","state":"red","message":"Status changed from green to red - Request Timeout after 30000ms","prevState":"green","prevMsg":"Kibana index ready"}
+{"type":"log","@timestamp":"2016-04-05T06:22:26+00:00","tags":["status","plugin:elasticsearch","error"],"pid":28994,"name":"plugin:elasticsearch","state":"red","message":"Status changed from red to red - Request Timeout after 1500ms","prevState":"red","prevMsg":"Request Timeout after 30000ms"}
+{"type":"response","@timestamp":"2016-04-05T06:21:10+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":90263,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 90263ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:17+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":85596,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 85596ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:22+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"114","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":81531,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 81531ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:27+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":76278,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 76278ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:33+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":70959,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 70959ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:21:38+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"113","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":65663,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 65663ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:44+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2069,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 2069ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:44+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2070,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 2070ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:44+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2085,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 2085ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:43+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2108,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 2108ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:44+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"111","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2075,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 2075ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:44+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"112","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":2086,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 2086ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":113,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 113ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":44,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 44ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":27,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 27ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/dashboard/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"110","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":53,"contentLength":9},"message":"POST /elasticsearch/.kibana/dashboard/_search?size=100 200 53ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/search/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":75,"contentLength":9},"message":"POST /elasticsearch/.kibana/search/_search?size=100 200 75ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/.kibana/visualization/_search?size=100","method":"post","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","content-length":"109","accept":"application/json, text/plain, */*","origin":"http://52.79.148.14:5601","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","content-type":"application/json;charset=UTF-8","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":133,"contentLength":9},"message":"POST /elasticsearch/.kibana/visualization/_search?size=100 200 133ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"get","statusCode":404,"req":{"url":"/elasticsearch/square-*/_mapping/field/*?_=1459837290440&ignore_unavailable=false&allow_no_indices=false&include_defaults=true","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":404,"responseTime":26,"contentLength":9},"message":"GET /elasticsearch/square-*/_mapping/field/*?_=1459837290440&ignore_unavailable=false&allow_no_indices=false&include_defaults=true 404 26ms - 9.0B"}
+{"type":"response","@timestamp":"2016-04-05T06:22:46+00:00","tags":[],"pid":28994,"method":"get","statusCode":200,"req":{"url":"/elasticsearch/logstash-*/_mapping/field/*?_=1459837272564&ignore_unavailable=false&allow_no_indices=false&include_defaults=true","method":"get","headers":{"host":"52.79.148.14:5601","connection":"keep-alive","accept":"application/json, text/plain, */*","kbn-version":"4.4.2","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36","referer":"http://52.79.148.14:5601/app/kibana","accept-encoding":"gzip, deflate, sdch","accept-language":"ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2"},"remoteAddress":"121.162.174.44","userAgent":"121.162.174.44","referer":"http://52.79.148.14:5601/app/kibana"},"res":{"statusCode":200,"responseTime":63,"contentLength":9},"message":"GET /elasticsearch/logstash-*/_mapping/field/*?_=1459837272564&ignore_unavailable=false&allow_no_indices=false&include_defaults=true 200 63ms - 9.0B"}
+{"type":"log","@timestamp":"2016-04-05T06:23:08+00:00","tags":["status","plugin:elasticsearch","info"],"pid":28994,"name":"plugin:elasticsearch","state":"green","message":"Status changed from red to green - Kibana index ready","prevState":"red","prevMsg":"Request Timeout after 1500ms"}
+{"type":"log","@timestamp":"2016-04-05T06:25:32+00:00","tags":["status","plugin:elasticsearch","error"],"pid":28994,"name":"plugin:elasticsearch","state":"red","message":"Status changed from green to red - Request Timeout after 1500ms","prevState":"green","prevMsg":"Kibana index ready"}
+^C
+ubuntu@ip-172-31-8-137:~$ cd /etc/default
+ubuntu@ip-172-31-8-137:/etc/default$ ls
+acpid         console-setup  dbus           grub    irqbalance  locale    ntfs-3g    rcS      ssh
+apport        cron           devpts         grub.d  keyboard    logstash  ntpdate    rsync    ufw
+bsdmainutils  cryptdisks     elasticsearch  halt    kibana      nss       pollinate  rsyslog  useradd
+ubuntu@ip-172-31-8-137:/etc/default$ cd elasticsearch
+-bash: cd: elasticsearch: Not a directory
+ubuntu@ip-172-31-8-137:/etc/default$ ls
+acpid         console-setup  dbus           grub    irqbalance  locale    ntfs-3g    rcS      ssh
+apport        cron           devpts         grub.d  keyboard    logstash  ntpdate    rsync    ufw
+bsdmainutils  cryptdisks     elasticsearch  halt    kibana      nss       pollinate  rsyslog  useradd
+ubuntu@ip-172-31-8-137:/etc/default$ vi elasticsearch
+ubuntu@ip-172-31-8-137:/etc/default$ ls /etc/bin/
+ls: cannot access /etc/bin/: No such file or directory
+ubuntu@ip-172-31-8-137:/etc/default$ cd /opt/kibana/
+ubuntu@ip-172-31-8-137:/opt/kibana$ ls
+bin  config  installedPlugins  LICENSE.txt  node  node_modules  optimize  package.json  README.txt  src  webpackShims
+ubuntu@ip-172-31-8-137:/opt/kibana$ cd bin
+ubuntu@ip-172-31-8-137:/opt/kibana/bin$ ls
+kibana  kibana.bat
+ubuntu@ip-172-31-8-137:/opt/kibana/bin$ cd ..
+ubuntu@ip-172-31-8-137:/opt/kibana$ cd ..
+ubuntu@ip-172-31-8-137:/opt$ ls
+kibana  logstash
+ubuntu@ip-172-31-8-137:/opt$ cd /etc/elasticsearch/
+-bash: cd: /etc/elasticsearch/: Permission denied
+ubuntu@ip-172-31-8-137:/opt$ ls
+kibana  logstash
+ubuntu@ip-172-31-8-137:/opt$ sudo cd /etc/elasticsearch/
+sudo: cd: command not found
+ubuntu@ip-172-31-8-137:/opt$ ls
+kibana  logstash
+ubuntu@ip-172-31-8-137:/opt$ ls /etc/elasticsearch/
+ls: cannot open directory /etc/elasticsearch/: Permission denied
+ubuntu@ip-172-31-8-137:/opt$ sudo ls /etc/elasticsearch/
+elasticsearch.yml  logging.yml	scripts
+ubuntu@ip-172-31-8-137:/opt$ cd /usr/share/elasticsearch/
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch$ ls
+bin  lib  modules  NOTICE.txt  plugins  README.textile
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch$ bin/plugin --install mobz/elasticsearch-head
+ERROR: unknown command [--install]. Use [-h] option to list available commands
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch$ cd bin
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ ls
+elasticsearch  elasticsearch.in.sh  elasticsearch-systemd-pre-exec  plugin
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ ./plugin --install mobz/elasticsearch-head
+ERROR: unknown command [--install]. Use [-h] option to list available commands
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ ./plugin -h
+
+NAME
+
+    plugin - Manages plugins
+
+SYNOPSIS
+
+    plugin <command>
+
+DESCRIPTION
+
+    Manage plugins
+
+COMMANDS
+
+    install    Install a plugin
+
+    remove     Remove a plugin
+
+    list       List installed plugins
+
+NOTES
+
+    [*] For usage help on specific commands please type "plugin <command> -h"
+
+
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ ./plugin install mobz/elasticsearch-head
+-> Installing mobz/elasticsearch-head...
+ERROR: plugin directory /usr/share/elasticsearch/plugins is read only
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ sudo ./plugin install mobz/elasticsearch-head
+-> Installing mobz/elasticsearch-head...
+Trying https://github.com/mobz/elasticsearch-head/archive/master.zip ...
+Downloading ...................................................................................................................................................................................................................................................................................DONE
+Verifying https://github.com/mobz/elasticsearch-head/archive/master.zip checksums if available ...
+NOTE: Unable to verify checksum for downloaded plugin (unable to find .sha1 or .md5 file to verify)
+Installed head into /usr/share/elasticsearch/plugins/head
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/bin$ cd ..
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch$ ls
+bin  lib  modules  NOTICE.txt  plugins  README.textile
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch$ cd plugins/
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins$ ls
+head
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins$ cd head/
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ ls
+elasticsearch-head.sublime-project  grunt_fileSets.js  LICENCE       plugin-descriptor.properties  _site  test
+Gruntfile.js                        index.html         package.json  README.textile                src
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ cd _site/
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head/_site$ ls
+app.css  app.js  base  fonts  i18n.js  index.html  lang  vendor.css  vendor.js
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head/_site$ cd ..
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ ls
+elasticsearch-head.sublime-project  grunt_fileSets.js  LICENCE       plugin-descriptor.properties  _site  test
+Gruntfile.js                        index.html         package.json  README.textile                src
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LITEN
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::9200                 :::*                    LISTEN
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::9200                 :::*                    LISTEN
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 172.31.8.137:9300       :::*                    LISTEN
+tcp6       0      0 fe80::f4:f6ff:fe05:9300 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 172.31.8.137:9200       :::*                    LISTEN
+tcp6       0      0 fe80::f4:f6ff:fe05:9200 :::*                    LISTEN
+tcp6       0      0 172.31.8.137:9300       :::*                    LISTEN
+tcp6       0      0 fe80::f4:f6ff:fe05:9300 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ ls
+elasticsearch-head.sublime-project  grunt_fileSets.js  LICENCE       plugin-descriptor.properties  _site  test
+Gruntfile.js                        index.html         package.json  README.textile                src
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 172.31.8.137:9200       :::*                    LISTEN
+tcp6       0      0 fe80::f4:f6ff:fe05:9200 :::*                    LISTEN
+tcp6       0      0 172.31.8.137:9300       :::*                    LISTEN
+tcp6       0      0 fe80::f4:f6ff:fe05:9300 :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /etc/elasticsearch/elasticsearch.yml
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo service elasticsearch restart
+ * Stopping Elasticsearch Server                                                                                   [ OK ]
+ * Starting Elasticsearch Server                                                                                   [ OK ]
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+
+
+
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 ::1:9200                :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 ::1:9300                :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ netstat -an | grep LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::5959                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     8732     /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     22619    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     18196    @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     9073     /var/run/acpid.socket
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ sudo vi /opt/kibana/config/^C
+ubuntu@ip-172-31-8-137:/usr/share/elasticsearch/plugins/head$ cd /opt/kibana/config/
+ubuntu@ip-172-31-8-137:/opt/kibana/config$ ls
+kibana.yml
+ubuntu@ip-172-31-8-137:/opt/kibana/config$ vi kibana.yml
+
+# Kibana is served by a back end server. This setting specifies the port to use.
+# server.port: 5601
+
+# This setting specifies the IP address of the back end server.
+server.host: "0.0.0.0"
+
+# Enables you to specify a path to mount Kibana at if you are running behind a proxy. This setting
+# cannot end in a slash.
+# server.basePath: ""
+
+# The maximum payload size in bytes for incoming server requests.
+# server.maxPayloadBytes: 1048576
+
+# The URL of the Elasticsearch instance to use for all your queries.
+# elasticsearch.url: "http://localhost:9200"
+
+# When this setting’s value is true Kibana uses the hostname specified in the server.host
+# setting. When the value of this setting is false, Kibana uses the hostname of the host
+# that connects to this Kibana instance.
+# elasticsearch.preserveHost: true
+
+# Kibana uses an index in Elasticsearch to store saved searches, visualizations and
+# dashboards. Kibana creates a new index if the index doesn’t already exist.
+# kibana.index: ".kibana"
+
+# The default application to load.
+# kibana.defaultAppId: "discover"
+
+# If your Elasticsearch is protected with basic authentication, these settings provide
+# the username and password that the Kibana server uses to perform maintenance on the Kibana
+# index at startup. Your Kibana users still need to authenticate with Elasticsearch, which
+# is proxied through the Kibana server.
+# elasticsearch.username: "user"
+# elasticsearch.password: "pass"
+
+# Paths to the PEM-format SSL certificate and SSL key files, respectively. These
+# files enable SSL for outgoing requests from the Kibana server to the browser.
+# server.ssl.cert: /path/to/your/server.crt
+# server.ssl.key: /path/to/your/server.key
+
+# Optional settings that provide the paths to the PEM-format SSL certificate and key files.
+# These files validate that your Elasticsearch backend uses the same key files.
+# elasticsearch.ssl.cert: /path/to/your/client.crt
+# elasticsearch.ssl.key: /path/to/your/client.key
+
+# Optional setting that enables you to specify a path to the PEM file for the certificate
+# authority for your Elasticsearch instance.
+# elasticsearch.ssl.ca: /path/to/your/CA.pem
+
+# To disregard the validity of SSL certificates, change this setting’s value to false.
+# elasticsearch.ssl.verify: true
+
+# Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
+# the elasticsearch.requestTimeout setting.
+# elasticsearch.pingTimeout: 1500
+
+# Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
+# must be a positive integer.
+# elasticsearch.requestTimeout: 300000
+
+# Time in milliseconds for Elasticsearch to wait for responses from shards. Set to 0 to disable.
+# elasticsearch.shardTimeout: 0
+
+# Time in milliseconds to wait for Elasticsearch at Kibana startup before retrying.
+# elasticsearch.startupTimeout: 5000
+
+# Specifies the path where Kibana creates the process ID file.
+# pid.file: /var/run/kibana.pid
+
+# Enables you specify a file where Kibana stores log output.
+# logging.dest: stdout
+
+# Set the value of this setting to true to suppress all logging output.
+# logging.silent: false
+
+# Set the value of this setting to true to suppress all logging output other than error messages.
+# logging.quiet: false
+
+# Set the value of this setting to true to log all events, including system usage information
+# and all requests.
+# logging.verbose: false

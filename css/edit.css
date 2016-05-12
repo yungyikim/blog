@@ -1,0 +1,44 @@
+body {
+}
+
+nav {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    padding: 10px;
+}
+
+nav a + a {
+    margin-left: 10px;
+}
+
+nav .owner {
+    font-style: normal;
+    color: #7F7F7F;
+    margin-left: 10px;
+}
+
+section {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    padding: 10px;
+}
+
+.ui.form textarea {
+    line-height: 1.5;
+}
+
+.preview-title {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ccc;
+    margin-bottom: 15px;
+}
+
+#save {
+    margin-top: 10px;
+}

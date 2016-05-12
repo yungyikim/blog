@@ -1,0 +1,123 @@
+body {
+}
+
+nav {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    padding: 10px;
+}
+
+nav a {
+    margin-right: 10px;
+    display: none;
+}
+
+section {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    padding: 10px;
+}
+
+article > .owner {
+    font-style: normal;
+    color: #7F7F7F;
+}
+
+article > .comment {
+    margin-top: 10px;
+}
+
+article > .comment > h5{
+    margin: 0px;
+}
+
+article .comment-write {
+    display: flex;
+    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+article .comment-write .ui.form {
+    width: 100%;
+}
+
+article .comment-write .button {
+    width: 100px;
+    height: 58px;
+    margin-left: 5px;
+}
+
+article .comment-list {
+    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+article .comment-list .owner {
+    font-style: normal;
+    color: #7F7F7F;
+}
+
+article .comment-view {
+}
+
+article .comment-view a {
+    float: right;
+}
+
+article .comment-view p {
+    margin-top: 5px;
+}
+
+article .sub-comment-write {
+    display: flex;
+}
+
+article .sub-comment-write .ui.form {
+    width: 100%;
+}
+
+article .sub-comment-write .button {
+    width: 100px;
+    height: 41px;
+    margin-left: 5px;
+}
+
+article .comment-view + .comment-view {
+    border-top: solid 1px #D4D4D4;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+section > footer {
+    padding: 10px;
+}
+
+body > footer {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: solid 1px #ccc;
+}
+
+#prev-link {
+    display: none;
+}
+
+#next-link {
+    display: none;
+    float: right;
+}
+
+@media (min-width: 740px) {
+
+}
