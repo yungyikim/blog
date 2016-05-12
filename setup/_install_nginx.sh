@@ -17,6 +17,6 @@ sudo chmod +x /etc/init.d/nginx
 sudo update-rc.d -f nginx defaults
 sudo mkdir /var/log/nginx
 sudo mkdir /etc/nginx/sites-enabled
-sudo ln -s $PROJECT_DIR/setup/etc/nginx/sites-avaliable/blog /etc/nginx/sites-enabled/blog
+sudo ln -s $PROJECT_DIR/setup/etc/nginx/sites-avaliable/www.yungyikim.com /etc/nginx/sites-enabled/www.yungyikim.com
 
 sudo service nginx restart
