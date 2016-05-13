@@ -25,6 +25,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'articles', views.ArticleViewSet)
 
 urlpatterns = [
+    url(r'^api/grappelli/', include('grappelli.urls')),
     url(r'^api/admin/', admin.site.urls),
 	url(r'^api/', include(router.urls)),
 	url(r'^api/docs/', include('rest_framework_swagger.urls')),
