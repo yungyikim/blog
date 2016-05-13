@@ -76,83 +76,15 @@ body > main {
 }
 
 body > main .cover {
-}
-
-body > main .cover-text-wrap {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-}
-
-body > main .cover-text {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    padding: 10px;
-}
-
-body > main .cover-text h1 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-shadow: 1px 1px rgba(0,0,0,0.1);
-}
-
-body > main .cover-text ul {
-    list-style-type: none;
-    list-style-image: none;
-    padding: 0;
-    margin: 0;
-    width: 520px;
-}
-
-@media (max-width:780px) {
-    body > main .cover-text ul {
-        width: 65%;
-    }
-}
-
-@media (max-width:620px) {
-    body > main .cover-text ul {
-        width: 70%;
-    }
-}
-
-@media (max-width:520px) {
-    body > main .cover-text ul {
-        width: 75%;
-    }
-}
-
-body > main .cover-text li + li {
-    margin-top: 10px;
-}
-
-body > main .cover-text ul p {
-    line-height: 1.8;
-    text-shadow: 1px 1px rgba(0,0,0,0.1);
-}
-
-body > main .cover-image {
-    background-image: url("https://dl.dropboxusercontent.com/u/12626526/yungyikim.com/yungyikim_cover.png");
-    background-size: cover;
-    background-position: 50% 50%;
-    width: 100%;
-    height: 400px;
-    position: absolute;
-}
-
-body > main .cover-wrap {
-    background-color: #000;
-    opacity: .1;
-    height: 400px;
+    height: 300px;
+    background-color: #E1E1E1;
 }
 
 body > main section {
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
+    min-height: 200px;
 }
 
 
