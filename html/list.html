@@ -14,7 +14,7 @@
                 <div class="dummy">
                 </div>
                 <h3>
-                    YUNGYIKIM 블로그
+                    <a href="/">YUNGYIKIM 블로그</a>
                 </h3>
                 <nav>
                     <ul>
@@ -35,8 +35,8 @@
             </div>
         </header>
         <main ng-controller="MainCtrl">
-            <div class="articles" ng-repeat="article in articles">
-                <article class="article" id="post-{{ article.id }}">
+            <div class="articles">
+                <article class="article" ng-repeat="article in articles">
                     <div class="thumbnail">
                         <img src="http://demo.shapedtheme.com/kotha/wp-content/uploads/2015/07/photo-1429041966141-44d228a42775-1140x600.jpeg" class="post-thumbnail" alt="">
                     </div>
@@ -76,6 +76,13 @@
             </div>
         </main>
         <footer>
+            <div class="wrap">
+                <div class="copyright">
+                    <p>
+                        Blog designed by <a href="#">YungyiKim</a>
+                    </p>
+                </div>
+            </div>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>

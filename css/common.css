@@ -19,8 +19,6 @@
 */
 
 body, h1, h2, h3, h4, h5, h6, li, p {
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
     font-family: "Noto Sans DemiLight", "Malgun Gothic";
     /*
     font-family:”Nanum Gothic”,”NanumGothic” !important ;
@@ -28,6 +26,8 @@ body, h1, h2, h3, h4, h5, h6, li, p {
     /*
     font-family:notokr-regular !important;
     */
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 body {
@@ -37,4 +37,6 @@ body {
 
 h1 {
     font-weight: 500;
+    -webkit-font-smoothing: initial;
+    font-smoothing: initial;
 }

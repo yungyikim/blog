@@ -49,12 +49,20 @@ body > header nav li + li {
     margin-left: 15px;
 }
 
+main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .article {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.article + .article {
     margin-top: 50px;
 }
 
@@ -110,4 +118,33 @@ a:hover.more-link {
     background-color: #00ACDF;
     border-color: #00ACDF;
     color: #fff;
+}
+
+body > footer {
+    background-color: #222222;
+    width: 100%;
+    display: table;
+    height: 80px;
+}
+
+body > footer .wrap {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+body > footer .copyright {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #6f6f6f;
+}
+
+body > footer .copyright p {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+body > footer .copyright p a {
+    color: #999;
+    font-weight: bold;
 }
