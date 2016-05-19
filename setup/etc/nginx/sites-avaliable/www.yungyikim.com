@@ -6,8 +6,7 @@ server {
     client_max_body_size 5M;
 
 	root    /home/ubuntu/blog/dist;
-    #index   index.html index.htm;
-    index   list.html list.htm;
+    index   index.html index.htm;
 
     location = /favicon.ico { access_log off; log_not_found off; }
 

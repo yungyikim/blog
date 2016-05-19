@@ -18,6 +18,21 @@ class UserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}
         }
 
+class BoardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Board
+        fields = (
+            'id',
+            'name'
+        )
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Category
+        fields = (
+            'id',
+            'name',
+            'board'
+        )
 
 class ArticleSerializer(serializers.ModelSerializer):
     email = serializers.CharField(source='owner.get_full_name', read_only=True)
@@ -26,7 +41,10 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = models.Article
         fields = (
             'id',
+            'board',
+            'category',
             'title',
+            'summary',
             'content_type',
             'content',
             'group',

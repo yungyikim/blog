@@ -23,6 +23,8 @@ from api import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'articles', views.ArticleViewSet)
+router.register(r'categorys', views.CategoryViewSet)
+router.register(r'boards', views.BoardViewSet)
 
 urlpatterns = [
     url(r'^api/grappelli/', include('grappelli.urls')),

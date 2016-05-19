@@ -30,6 +30,30 @@ import logging
 User = get_user_model()
 logger = logging.getLogger('command')
 
+class BoardViewSet(viewsets.ModelViewSet):
+    queryset = models.Board.objects.all()
+    serializer_class = serializers.BoardSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = models.Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def list(self, request, *args, **kwargs):
+        board_id = request.GET['board_id']
+        logger.info('board_id:'+board_id)
+
+        queryset = self.filter_queryset(self.get_queryset()).filter(board=board_id)
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 class ArticleViewSet(viewsets.ModelViewSet):
     #queryset = models.Article.objects.all()
     queryset = models.Article.objects.filter(content_type='A').order_by('-id')
@@ -60,7 +84,10 @@ class ArticleViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
+        board_id = request.GET['board_id']
+        logger.info('board_id:'+board_id)
+
+        queryset = self.filter_queryset(self.get_queryset()).filter(board=board_id)
 
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -101,6 +128,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
             request.data['group'] = obj.id
             request.data['title'] = 'unused'
+            request.data['summary'] = 'unused'
 
             group = int(obj.group)
             sequence = int(obj.sequence)

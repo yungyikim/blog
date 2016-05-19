@@ -9,19 +9,34 @@ from django import forms
 from django.core.validators import validate_email
 
 # Create your models here.
+class Board(models.Model):
+    name = models.CharField(max_length=32, null=False)
+
+    def __str__(self):
+        return "%d" % (self.id)
+
+class Category(models.Model):
+    name = models.CharField(max_length=32, null=False)
+    board = models.ForeignKey('Board', related_name='categorys')
+
+    def __str__(self):
+        return "%d" % (self.id)
 
 class Article(models.Model):
     class Meta(object):
         index_together = [
             ["group", "sequence"],
         ]
-        
+
     CONTENT_TYPES = (
         ('A', 'Article'),
         ('C', 'Comment'),
     )
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='articles')
+    board = models.ForeignKey('Board', related_name='articles')
+    category = models.ForeignKey('Category', related_name='articles')
     title = models.CharField(blank=True, max_length=100)
+    summary = models.TextField()
     content_type = models.CharField(max_length=1, choices=CONTENT_TYPES)
     content = models.TextField()
     group = models.IntegerField(null=False, unique=False)

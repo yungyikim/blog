@@ -1,104 +1,86 @@
 
 $(document).ready(function() {
-    new Page();
 });
 
-function Page() {
-    this.id = null;
-    this.user = new UserModel();
-    this.article = new ArticleModel();
-    this.view = new View();
-    this.init();
-}
+var app = angular.module('myapp', ['ngRoute']);
+app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+    var uri = URI(document.location);
+    $scope.board_name = uri.segment()[0];
+    $scope.article_id = uri.segment()[1];
+    $scope.boards = [];
+    $scope.categorys = new Array(20);
 
-Page.prototype = {
-    init: function() {
-        var self = this;
-        var url = new Url(jQuery(location).attr('href'));
-        this.id = url.query.id;
-        $('#edit-link').attr('href', '/edit?id='+this.id);
-
-        this.user.ready();
-        this.article.get(this.id, function(data, status) {
-            if (data) {
-                self.view.update(self.user, data);
-                $('.comment-write .ui.form').attr('data-id', self.id);
-                $('.comment-write button').attr('data-id', self.id);
-            }
-        });
-        this.article.updateComment(this.id, function(data, status) {
-            if (data) {
-                self.view.updateComment(data);
-            }
-            self.bind();
-        });
-    },
-    bind: function() {
-        var self = this;
-
-        $('#delete-link').click(function() {
-            self.article.delete(self.id, function(data) {
-                location.href = '/list';
-            });
-            return false;
-        });
-
-        $('.comment-write button').click(function() {
-            var id = $(this).attr('data-id');
-            var content = $('.comment-write .ui.form[data-id='+id+'] textarea').val();
-            self.article.saveComment(id, content, function(data) {
-                location.reload(true);
-            });
-            return false;
-        });
-
-        $('.sub-comment-write button').click(function() {
-            var id = $(this).attr('data-id');
-            var content = $('.sub-comment-write .ui.form[data-id='+id+'] textarea').val();
-            self.article.saveComment(id, content, function(data) {
-                location.reload(true);
-            });
-            return false;
-        });
-
-        $('.comment-view a').click(function() {
-            var id = $(this).attr('data-id');
-            $('.sub-comment-write[data-id="'+id+'"]').css('display', 'flex');
-            return false;
-        });
-    }
-};
-
-function View() {
-    this.converter = new showdown.Converter();
-}
-
-View.prototype = {
-    update: function(user, data) {
-        if (user && user.isAuthenticated()) {
-            $('#user-email').text(user.email());
-            // 자신이 작성한 게시물일 경우 '편집', '삭제' 버튼을 보여준다.
-            if (user.id() === data.owner) {
-                $('#edit-link, #delete-link').css('display', 'inline');
-            }
-            // 로그인 상태라면 댓글 작성 부분을 활성화 시키자
-            $('textarea, button').removeAttr('disabled');
+    console.log(uri);
+    console.log($scope.board_name);
+    console.log($scope.article_id);
+    /*
+    var re = /\/([0-9]+)\/?$/;
+        var arr = location.pathname.match(re);
+        if (arr) {
+            docId = arr[1];
         }
+        */
+    $scope.article = {};
 
-        if (data) {
-            $('#owner').text(data.email);
-            // 내용 출력
-            $('#preview-title').text(data.title);
-            var html = this.converter.makeHtml(data.content);
-            $('#preview-content').html(html);
-        }
-    },
-    updateComment: function(data) {
-        if (data) {
-            for (var i in data) {
-                var html = '<div class="comment-view depth-'+data[i].depth+'"><i class="owner">'+data[i].email+'</i><a href="#" data-id="'+data[i].id+'">댓글</a><p>'+data[i].content+'</p><div class="sub-comment-write" data-id="'+data[i].id+'"><div class="ui form" data-id="'+data[i].id+'"><div class="field"><textarea rows="1" disabled=""></textarea></div></div><div><button class="ui button" data-id="'+data[i].id+'" disabled="">내용입력</button></div></div></div>';
-                $('.comment-list').append(html);
+    $http.get('/api/boards')
+        .then(
+            function(response) {
+                console.log(response);
+                $scope.boards = response.data.results.slice(0);
+
+                for (var i=0; i<$scope.boards.length; i++) {
+                    if ($scope.board_name === $scope.boards[i].name) {
+                        $scope.board_id = $scope.boards[i].id;
+                    }
+                }
+
+                return $http.get('/api/categorys?board_id='+$scope.board_id);
+            },
+            function(error) {
+                console.log(error);
             }
-        }
-    }
-};
+        )
+        .then(
+            function(response) {
+                console.log(response);
+                if (response) {
+                    for (var i=0; i<response.data.results.length; i++) {
+                        var category = response.data.results[i];
+                        $scope.categorys[category.id] = category.name;
+                    }
+                    return $http.get('/api/articles/'+$scope.article_id);
+                }
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+        .then(
+            function(response) {
+                console.log(response);
+                if (response) {
+                    $scope.article = response.data;
+                    var category_name = $scope.categorys[$scope.article.category];
+                    if (category_name === undefined) {
+                        category_name = 'Uncategorized';
+                    }
+
+                    var m = moment($scope.article.created);
+                    $scope.article.category_name = category_name;
+                    $scope.article.created_format = m.format('ll');
+                    $scope.article.meta = 'By ' + $scope.article.email + ' / ' + m.format('ll') + ' / ' + category_name;
+
+                    $scope.html = new showdown.Converter().makeHtml($scope.article.content);
+                    console.log($scope.article.html);
+
+                    $scope.renderHtml = function(htmlCode) {
+                        return $sce.trustAsHtml(htmlCode);
+                    };
+                }
+            },
+            function(error) {
+                console.log(error);
+            }
+        );
+
+}]);

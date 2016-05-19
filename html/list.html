@@ -1,46 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko-KR">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>목록</title>
-        <link href="ui/semantic.css" rel="stylesheet">
+        <title>YUNGYIKIM 블로그 - 목록</title>
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/list.css" rel="stylesheet">
+        <link href="/ui/semantic.css" rel="stylesheet">
+        <link href="/css/common.css" rel="stylesheet">
+        <link href="/css/list.css" rel="stylesheet">
     </head>
-    <body class="">
-        <nav>
-            <a href='/edit' id="edit-link">새 글쓰기</a>
-            <a href='/signin' id="signin-link">로그인</a>
-            <a href='/list' id="signout-link">로그아웃(admin@yungyikim.com)</a>
-            <a href='/signup' id="signup-link">회원가입</a>
-        </nav>
-        <section>
-            <div class="article-list">
+    <body ng-app="myapp">
+        <header>
+            <div class="inner">
+                <div class="dummy">
+                </div>
+                <h3>
+                    YUNGYIKIM 블로그
+                </h3>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">YungyiKim 소개</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yungyikim/blog"><i class="fa fa-github-square" aria-hidden="true"></i> 블로그 소스 코드</a>
+                        </li>
+                        <li>
+                            <a href="/tech">기술 노트</a>
+                        </li>
+                        <li>
+                            <a href="/info">정보 노트</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <footer>
-                <a href="#" id="prev-link">이전</a>
-                <a href="#" id="next-link">다음</a>
-            </footer>
-        </section>
+        </header>
+        <main ng-controller="MainCtrl">
+            <div class="articles" ng-repeat="article in articles">
+                <article class="article" id="post-{{ article.id }}">
+                    <div class="thumbnail">
+                        <img src="http://demo.shapedtheme.com/kotha/wp-content/uploads/2015/07/photo-1429041966141-44d228a42775-1140x600.jpeg" class="post-thumbnail" alt="">
+                    </div>
+                    <div class="content">
+                        <header class="entry-header">
+                            <h1>
+                                {{ article.title }}
+                            </h1>
+                        </header>
+                        <div class="entry-meta">
+                            <ul>
+                                <li>
+                                    By {{ article.email }}
+                                </li>
+                                <li>
+                                    /
+                                </li>
+                                <li>
+                                    {{ article.created_format }}
+                                </li>
+                                <li>
+                                    /
+                                </li>
+                                <li>
+                                    {{ article.category_name }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry-summary">
+                            <p>
+                                {{ article.summary }}
+                                <a href="/{{ board_name }}/{{ article.id }}/" class="more-link">Keep Reading</a>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
         <footer>
-            <h3>참고사항</h3>
-            <p>
-                테스트는 <b>user@yungyikim.com(비밀번호:1234)</b> 계정을 사용하시거나 신규 계정을 생성하여 진행하시면 됩니다.<br>
-                Github : <a href="https://github.com/yungyikim/blog/">https://github.com/yungyikim/blog/</a>
-            </p>
         </footer>
-	    <script src="assets/js/jquery.min.js"></script>
-	    <script src="assets/js/url.js"></script>
-	    <script src="ui/semantic.js"></script>
-	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-	    <script src="js/common.js"></script>
-	    <script src="js/user.js"></script>
-	    <script src="js/article.js"></script>
-	    <script src="js/list.js"></script>
-	</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/moment-with-locales.min.js"></script>
+	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/ui/semantic.js"></script>
+	    <script src="/js/common.js"></script>
+	    <script src="/js/list.js"></script>
+    </body>
 </html>

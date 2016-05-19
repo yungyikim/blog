@@ -1,81 +1,143 @@
-var host = 'http://'+document.location.host;
-
 $(document).ready(function() {
-    new Page();
 });
 
-function Page() {
-    this._page = 1;
-    this.user = new UserModel();
-    this.article = new ArticleModel();
-    this.view = new View();
-    this.init();
-}
+var app = angular.module('myapp', ['ngRoute']);
+app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+    var uri = URI(document.location);
+    $scope.board_name = uri.segment()[0];
+    $scope.boards = [];
+    $scope.categorys = new Array(20);
+    $scope.articles = [];
 
-Page.prototype = {
-    init: function() {
-        var self = this;
-        var url = new Url(jQuery(location).attr('href'));
-        console.log(url.query.page);
-        if (url.query.page) this._page = url.query.page;
+    console.log(uri);
+    console.log($scope.board_name);
 
-        this.user.ready(function() {
-            self.view.updateUserInfo(self.user);
-        });
-        this.article.update(this._page, function(data, status) {
-            self.view.update(self.article);
-            self.bind();
-        });
-
-    },
-    bind: function() {
-        var self = this;
-        $('#signout-link').click(function() {
-            self.user.signout(function() {
-                location.reload(true);
-            });
-
-            return false;
-        });
-
+    /*
+    for (var i=0; i<categorys.length; i++) {
+        categorys[i] = 'Uncategorized';
     }
-};
+    */
 
-function View() {
+    $http.get('/api/boards')
+        .then(
+            function(response) {
+                console.log(response);
+                $scope.boards = response.data.results.slice(0);
 
-}
+                for (var i=0; i<$scope.boards.length; i++) {
+                    if ($scope.board_name === $scope.boards[i].name) {
+                        $scope.board_id = $scope.boards[i].id;
+                    }
+                }
 
-View.prototype = {
-    update: function(article) {
-        var results = article.articles();
-        var prevPage = article.prevPage();
-        var nextPage = article.nextPage();
-
-        if (results) {
-            for (var i in results) {
-                console.log(results[i]);
-                var html = '<article><header><a href="/view?id='+results[i].id+'"><h4>'+results[i].title+'</h4></a></header><i class="owner">'+results[i].email+'</i></article>';
-                $('.article-list').append(html);
+                return $http.get('/api/categorys?board_id='+$scope.board_id);
+            },
+            function(error) {
+                console.log(error);
             }
+        )
+        .then(
+            function(response) {
+                console.log(response);
+                if (response) {
+                    for (var i=0; i<response.data.results.length; i++) {
+                        var category = response.data.results[i];
+                        $scope.categorys[category.id] = category.name;
+                    }
+                    return $http.get('/api/articles?board_id='+$scope.board_id);
+                }
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+        .then(
+            function(response) {
+                console.log(response);
+                if (response) {
+                    $scope.articles = response.data.results.slice(0);
+
+                    for (var i=0; i<$scope.articles.length; i++) {
+                        var article = $scope.articles[i];
+                        var category_name = $scope.categorys[article.category];
+                        if (category_name === undefined) {
+                            category_name = 'Uncategorized';
+                        }
+
+                        var m = moment(article.created);
+                        article.category_name = category_name;
+                        article.created_format = m.format('ll');
+                        article.meta = 'By ' + article.email + ' / ' + m.format('ll') + ' / ' + category_name;
+                    }
+                }
+            },
+            function(error) {
+                console.log(error);
+            }
+        );
+
+/*
+    $http({
+        method: 'GET',
+        url: host+'/api/categorys'
+    })
+    .success(function(data, status, headers, config) {
+        for (var i=0; i<data.results.length; i++) {
+            var category = data.results[i];
+            $scope.categorys[category.id] = category.name;
         }
-        if (prevPage) {
-            $('#prev-link').attr('href', '/list?page='+prevPage);
-            $('#prev-link').css('display', 'inline');
+    })
+    .error(function(data, status, headers, config) {
+
+    });
+
+
+
+
+
+
+
+    $http({
+        method: 'GET',
+        url: host+'/api/articles'
+    })
+    .success(function(data, status, headers, config) {
+        $scope.articles = data.results.slice(0);
+
+        for (var i=0; i<$scope.articles.length; i++) {
+            var article = $scope.articles[i];
+            var category_name = $scope.categorys[article.category];
+            if (category_name === undefined) {
+                category_name = 'Uncategorized';
+            }
+
+            var m = moment(article.created);
+            article.category_name = category_name;
+            article.created_format = m.format('ll');
+            article.meta = 'By ' + article.email + ' / ' + m.format('ll') + ' / ' + category_name;
         }
-        if (nextPage) {
-            $('#next-link').attr('href', '/list?page='+nextPage);
-            $('#next-link').css('display', 'inline');
+    })
+    .error(function(data, status, headers, config) {
+        console.log('error');
+        console.log(data);
+        console.log(status);
+    });
+    */
+
+
+/*
+    $scope.articles = [
+        {
+            id: 99,
+            title: '글 제목입니다.',
+            //meta: 'By mybjunga@gmail.com / Jul 02, 2016 / 카테고리1',
+            email: 'yungyikim@gmail.com',
+            created: '2016-04-14T05:32:24.469788Z',
+            category: 1,
+            content: 'Spsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. officia deserunt mollit anim id est laborum. lorem ipsum dolor sit'
         }
-    },
-    updateUserInfo: function(user) {
-        if (user.isAuthenticated()) {
-            $('#edit-link').css('display', 'inline');
-            $('#signout-link').text('로그아웃('+user.email()+')');
-            $('#signout-link').css('display', 'inline');
-        }
-        else {
-            $('#signin-link').css('display', 'inline');
-            $('#signup-link').css('display', 'inline');
-        }
-    }
-};
+    ];
+*/
+
+
+}]);

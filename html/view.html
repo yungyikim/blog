@@ -2,68 +2,83 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>보기</title>
-        <link href="ui/semantic.css" rel="stylesheet">
+        <title>YUNGYIKIM 블로그 - 보기</title>
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/view.css" rel="stylesheet">
+        <link href="/ui/semantic.css" rel="stylesheet">
+        <link href="/css/common.css" rel="stylesheet">
+        <link href="/css/view.css" rel="stylesheet">
     </head>
-    <body class="">
-        <nav>
-            <a href='/list'>목록</a>
-            <a href='/edit' id="edit-link">편집</a>
-            <a href='/list' id="delete-link">삭제</a>
-            <i class="owner" id="user-email"></i>
-        </nav>
-        <section>
-            <article>
-                <div class="preview-title">
-                    <h4 id=preview-title>
-                    </h4>
+    <body ng-app="myapp">
+        <header>
+            <div class="inner">
+                <div class="dummy">
                 </div>
-                <div class="owner-wrap">
-                    <p class="owner" id="owner">
-                    </p>
+                <h3>
+                    YUNGYIKIM 블로그
+                </h3>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">YungyiKim 소개</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yungyikim/blog"><i class="fa fa-github-square" aria-hidden="true"></i> 블로그 소스 코드</a>
+                        </li>
+                        <li>
+                            <a href="/tech">기술 노트</a>
+                        </li>
+                        <li>
+                            <a href="/info">정보 노트</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main ng-controller="MainCtrl">
+            <article class="article" id="post-{{ article.id }}">
+                <div class="thumbnail">
+                    <img src="http://demo.shapedtheme.com/kotha/wp-content/uploads/2015/07/photo-1429041966141-44d228a42775-1140x600.jpeg" class="post-thumbnail" alt="">
                 </div>
-                <div id="preview-content">
-                </div>
-                <div class="comment">
-                    <h5>
-                        댓글
-                    </h5>
-                    <hr/>
-                    <div class="comment-write">
-                        <div class="ui form">
-                            <div class="field">
-                                <textarea rows="2" disabled=""></textarea>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="ui button" disabled="">
-                                내용입력
-                            </button>
-                        </div>
+                <div class="content">
+                    <header class="entry-header">
+                        <h1>
+                            {{ article.title }}
+                        </h1>
+                    </header>
+                    <div class="entry-meta">
+                        <ul>
+                            <li>
+                                By {{ article.email }}
+                            </li>
+                            <li>
+                                /
+                            </li>
+                            <li>
+                                {{ article.created_format }}
+                            </li>
+                            <li>
+                                /
+                            </li>
+                            <li>
+                                {{ article.category_name }}
+                            </li>
+                        </ul>
                     </div>
-                    <hr/>
-                    <div class="comment-list">
+                    <div class="entry-content" ng-bind-html="renderHtml(html)">
                     </div>
                 </div>
             </article>
-        </section>
+        </main>
         <footer>
         </footer>
-	    <script src="assets/js/jquery.min.js"></script>
-	    <script src="assets/js/url.js"></script>
-	    <script src="assets/js/showdown.js"></script>
-	    <script src="ui/semantic.js"></script>
-	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-	    <script src="js/common.js"></script>
-	    <script src="js/user.js"></script>
-	    <script src="js/article.js"></script>
-	    <script src="js/view.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/moment-with-locales.min.js"></script>
+	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/assets/js/showdown.js"></script>
+	    <script src="/ui/semantic.js"></script>
+	    <script src="/js/common.js"></script>
+	    <script src="/js/view.js"></script>
 	</body>
 </html>

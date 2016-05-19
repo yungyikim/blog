@@ -30,81 +30,11 @@ body, h1, h2, h3, h4, h5, h6, li, p {
     */
 }
 
-body > header {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-body > header .dummy {
-    display: inline-block;
-    vertical-align: middle;
-    height: 70px;
-}
-
-body > header h3 {
-    display: inline-block;
-    vertical-align: middle;
-    width: 140px;
-    margin: 0;
-}
-
-body > header nav {
-    display: inline-block;
-    vertical-align: middle;
-    width: calc(100% - 150px);
-    text-align: right;
-}
-
-body > header nav ul {
-    list-style-type: none;
-    list-style-image: none;
+body {
     padding: 0;
     margin: 0;
 }
 
-body > header nav li {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-body > header nav li + li {
-    margin-left: 15px;
-}
-
-body > main {
-}
-
-body > main .cover {
-    height: 300px;
-    background-color: #E1E1E1;
-}
-
-body > main section {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 200px;
-}
-
-
-body > footer {
-    background-color: #060606;
-}
-
-body > footer .copyright {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 80px;
-    color: #555;
-}
-
-body > footer .copyright p {
-    font-family: "Open Sans", Arial, sans-serif;
-    font-size: 0.9em;
-}
-
-@media (min-width: 840px) {
-
+h1 {
+    font-weight: 500;
 }
