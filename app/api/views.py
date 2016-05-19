@@ -84,10 +84,18 @@ class ArticleViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def list(self, request, *args, **kwargs):
-        board_id = request.GET['board_id']
-        logger.info('board_id:'+board_id)
+        board_id = None
+        try:
+            board_id = request.GET['board_id']
+        except:
+            board_id = None
 
-        queryset = self.filter_queryset(self.get_queryset()).filter(board=board_id)
+        queryset = None
+        if board_id:
+            logger.info('board_id:'+board_id)
+            queryset = self.filter_queryset(self.get_queryset()).filter(board=board_id)
+        else:
+            queryset = self.filter_queryset(self.get_queryset())
 
         page = self.paginate_queryset(queryset)
         if page is not None:

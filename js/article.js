@@ -86,9 +86,12 @@ ArticleModel.prototype = {
     articles: function() {
         return this._articles;
     },
-    save: function(id, title, content, callback) {
+    save: function(id, board_id, category_id, title, summary, content, callback) {
         var data = {
+            board: board_id,
+            category: category_id,
             title: title,
+            summary: summary,
             content_type: 'A',
             content: content,
             group: 0,

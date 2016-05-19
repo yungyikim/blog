@@ -7,16 +7,16 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>편집</title>
-        <link href="ui/semantic.css" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/edit.css" rel="stylesheet">
+        <link href="/ui/semantic.css" rel="stylesheet">
+        <link href="/css/edit.css" rel="stylesheet">
     </head>
-    <body class="">
+    <body ng-app="myapp">
         <nav>
-            <a href='/list'>목록</a>
+            <a href='/'>홈</a>
             <i class="owner" id="user-email"></i>
         </nav>
-        <section>
+        <main ng-controller="MainCtrl">
             <article>
                 <div class="ui top attached tabular menu">
                     <a class="item active" data-tab="edit">Edit</a>
@@ -25,10 +25,25 @@
                 <div class="ui bottom attached tab segment active" data-tab="edit">
                     <div class="ui form">
                         <div class="field">
-                            <textarea rows="1" id="title"></textarea>
+                            <label>Board</label>
+                            <input type="text" readonly="" ng-model="board_name">
                         </div>
                         <div class="field">
-                            <textarea rows="30" id="content"></textarea>
+                            <label>Category</label>
+                            <select class="ui dropdown" ng-model="selected_category" ng-options="category.id as category.name for category in categorys">
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Title</label>
+                            <textarea rows="1" id="title" ng-model="article.title"></textarea>
+                        </div>
+                        <div class="field">
+                            <label>Summary</label>
+                            <textarea rows="5" id="summary" ng-model="article.summary"></textarea>
+                        </div>
+                        <div class="field">
+                            <label>Content</label>
+                            <textarea rows="30" id="content" ng-model="article.content"></textarea>
                         </div>
                     </div>
                 </div>
@@ -40,22 +55,23 @@
                     <div id="preview-content">
                     </div>
                 </div>
-                <button class="ui primary button" id="save">
+                <button class="ui primary button" id="save" ng-click="post_article()">
                     Save
                 </button>
             </article>
-        </section>
+        </main>
         <footer>
         </footer>
-	    <script src="assets/js/jquery.min.js"></script>
-	    <script src="assets/js/url.js"></script>
-	    <script src="assets/js/showdown.js"></script>
-	    <script src="ui/semantic.js"></script>
-	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-	    <script src="js/common.js"></script>
-	    <script src="js/user.js"></script>
-	    <script src="js/article.js"></script>
-	    <script src="js/edit.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/url.js"></script>
+	    <script src="/assets/js/showdown.js"></script>
+	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/ui/semantic.js"></script>
+	    <script src="/js/common.js"></script>
+	    <script src="/js/user.js"></script>
+	    <script src="/js/article.js"></script>
+	    <script src="/js/edit.js"></script>
 	</body>
 </html>

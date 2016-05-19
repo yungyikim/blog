@@ -2,7 +2,7 @@ body {
 }
 
 nav {
-    max-width: 740px;
+    max-width: 840px;
     margin-left: auto;
     margin-right: auto;
     height: 40px;
@@ -19,8 +19,8 @@ nav .owner {
     margin-left: 10px;
 }
 
-section {
-    max-width: 740px;
+main {
+    max-width: 840px;
     margin-left: auto;
     margin-right: auto;
 }
