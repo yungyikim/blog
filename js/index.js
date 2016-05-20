@@ -42,7 +42,7 @@ Page.prototype = {
               }
             },
             {
-              breakpoint: 600,
+              breakpoint: 700,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2

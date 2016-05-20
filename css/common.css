@@ -40,3 +40,25 @@ h1 {
     -webkit-font-smoothing: initial;
     font-smoothing: initial;
 }
+
+@media (max-width: 640px) {
+    body > header .dummy {
+        display: none;
+    }
+
+    body > header h3 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    body > header nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+}

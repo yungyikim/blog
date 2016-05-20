@@ -64,6 +64,17 @@ body > main article {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
+@media (max-width: 700px) {
+    body > main article {
+        padding: 10px;
+    }
+
+    body > main article .time-count {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
 body > main article .time-count {
     padding-bottom: 20px;
 }
