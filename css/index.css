@@ -191,6 +191,11 @@ body > main section.featured .grayimg.aws {
     margin-top: 55px;
 }
 
+body > main section.featured .grayimg.gulp {
+    height: 80px;
+    margin-top: 35px;
+}
+
 body > main section.featured .grayimg.angular{
     height: 80px;
     margin-top: 35px;
