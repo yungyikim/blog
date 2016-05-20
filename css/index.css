@@ -45,6 +45,7 @@ body > main {
 }
 
 body > main .cover {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 body > main .cover-text-wrap {
@@ -104,7 +105,7 @@ body > main .cover-text ul p {
 }
 
 body > main .cover-image {
-    background-image: url("https://dl.dropboxusercontent.com/u/12626526/yungyikim.com/yungyikim_cover.png");
+    background-image: url("https://s3.ap-northeast-2.amazonaws.com/yungyikim.com/yungyikim_cover.png");
     background-size: cover;
     background-position: 50% 50%;
     width: 100%;
@@ -121,11 +122,94 @@ body > main .cover-wrap {
 }
 
 body > main section {
-    max-width: 840px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #000;
+}
+
+body > main section.featured {
+    min-height: 200px;
+    padding-top: 20px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
+body > main section.featured .container {
+}
+
+body > main section.featured ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+body > main section.featured li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body > main section.featured li + li {
+    margin-left: 100px;
+}
+
+body > main section.featured .grayimg {
+    filter: url(filters.svg#grayscale); /* Firefox */
+    filter: gray; /* IE */
+    -webkit-filter: grayscale(1); /* Webkit */
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+body > main section.featured .grayimg:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+body > main section.featured .grayimg.nginx{
+    width: 160px;
+    margin-top: 60px;
+}
+
+body > main section.featured .grayimg.django{
+    width: 140px;
+    margin-top: 55px;
+}
+
+body > main section.featured .grayimg.mysql {
+    height: 160px;
+}
+
+body > main section.featured .grayimg.elasticsearch {
+    height: 80px;
+    margin-top: 35px;
+}
+
+body > main section.featured .grayimg.aws {
+    margin-top: 55px;
+}
+
+body > main section.featured .grayimg.angular{
+    height: 80px;
+    margin-top: 35px;
+}
+
+body > main section.featured .grayimg.jquery{
+    width: 180px;
+    margin-top: 55px;
+}
+
+body > main section.featured .grayimg.bootstrap {
+    height: 80px;
+    margin-top: 35px;
+}
+
+body > main section.featured .grayimg.semantic-ui {
+    height: 80px;
+    margin-top: 35px;
+}
 
 body > footer {
     background-color: #222222;
