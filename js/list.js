@@ -2,7 +2,7 @@ $(document).ready(function() {
 });
 
 var app = angular.module('myapp', ['ngRoute']);
-app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
     var uri = URI(document.location);
     $scope.board_name = uri.segment()[0];
     $scope.boards = [];
@@ -66,6 +66,13 @@ app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
                         article.category_name = category_name;
                         article.created_format = m.format('ll');
                         article.meta = 'By ' + article.email + ' / ' + m.format('ll') + ' / ' + category_name;
+
+                        article.html = new showdown.Converter().makeHtml(article.summary);
+                        console.log(article.html);
+
+                        $scope.renderHtml = function(htmlCode) {
+                            return $sce.trustAsHtml(htmlCode);
+                        };
                     }
                 }
             },

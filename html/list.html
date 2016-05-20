@@ -66,8 +66,8 @@
                             </ul>
                         </div>
                         <div class="entry-summary">
+                            <div  ng-bind-html="renderHtml(article.html)"></div>
                             <p>
-                                {{ article.summary }}
                                 <a href="/{{ board_name }}/{{ article.id }}/" class="more-link">Keep Reading</a>
                             </p>
                         </div>
@@ -89,6 +89,7 @@
 	    <script src="/assets/js/jquery.min.js"></script>
 	    <script src="/assets/js/moment-with-locales.min.js"></script>
 	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/assets/js/showdown.js"></script>
 	    <script src="/ui/semantic.js"></script>
 	    <script src="/js/common.js"></script>
 	    <script src="/js/list.js"></script>
