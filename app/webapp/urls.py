@@ -25,6 +25,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'articles', views.ArticleViewSet)
 router.register(r'categorys', views.CategoryViewSet)
 router.register(r'boards', views.BoardViewSet)
+router.register(r'profiles', views.ProfileViewSet)
 
 urlpatterns = [
     url(r'^api/grappelli/', include('grappelli.urls')),

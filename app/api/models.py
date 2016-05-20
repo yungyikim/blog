@@ -9,6 +9,14 @@ from django import forms
 from django.core.validators import validate_email
 
 # Create your models here.
+class Profile(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='profiles')
+    content = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%d" % (self.id)
+
 class Board(models.Model):
     name = models.CharField(max_length=32, null=False)
 

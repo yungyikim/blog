@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Yungyikim 블로그 - 소개 - 편집</title>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/ui/semantic.css" rel="stylesheet">
+        <link href="/css/common.css" rel="stylesheet">
+        <link href="/css/profile/edit.css" rel="stylesheet">
+    </head>
+    <body ng-app="myapp">
+        <header>
+            <div class="dummy">
+            </div>
+            <h3>
+                <a href="/">YUNGYIKIM 블로그</a>
+            </h3>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/profile">YungyiKim 소개</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/yungyikim/blog"><i class="fa fa-github-square" aria-hidden="true"></i> 블로그 소스 코드</a>
+                    </li>
+                    <li>
+                        <a href="/tech">기술 노트</a>
+                    </li>
+                    <li>
+                        <a href="/info">정보 노트</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main ng-controller="MainCtrl">
+            <div>
+                <p>{{ user.email }}</p>
+            </div>
+            <article>
+                <div class="ui top attached tabular menu">
+                    <a class="item active" data-tab="edit">Edit</a>
+                    <a class="item" data-tab="preview" ng-click="preview_content()">Preview</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="edit">
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Content</label>
+                            <textarea rows="30" id="content" ng-model="content"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="preview">
+                    <div id="preview-content" ng-bind-html="renderHtml(html)">
+                    </div>
+                </div>
+                <button class="ui primary button" id="save" ng-click="save_profile()">
+                    Save
+                </button>
+            </article>
+        </main>
+        <footer>
+            <div class="wrap">
+                <div class="copyright">
+                    <p>
+                        Blog designed by <a href="#">YungyiKim</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/showdown.js"></script>
+	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/ui/semantic.js"></script>
+	    <script src="/js/common.js"></script>
+	    <script src="/js/profile/edit.js"></script>
+	</body>
+</html>

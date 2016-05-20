@@ -18,6 +18,15 @@ class UserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}
         }
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Profile
+        fields = (
+            'id',
+            'content',
+            'owner'
+        )
+
 class BoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Board
@@ -25,6 +34,7 @@ class BoardSerializer(serializers.ModelSerializer):
             'id',
             'name'
         )
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category

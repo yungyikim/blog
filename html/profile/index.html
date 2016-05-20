@@ -2,11 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>YUNGYIKIM 블로그 - 보기</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Yungyikim 블로그 - 소개</title>
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="/ui/semantic.css" rel="stylesheet">
         <link href="/css/common.css" rel="stylesheet">
-        <link href="/css/view.css" rel="stylesheet">
+        <link href="/css/profile/index.css" rel="stylesheet">
     </head>
     <body ng-app="myapp">
         <header>
@@ -35,37 +39,11 @@
             </div>
         </header>
         <main ng-controller="MainCtrl">
-            <article class="article" id="post-{{ article.id }}">
-                <div class="thumbnail">
-                    <img src="http://demo.shapedtheme.com/kotha/wp-content/uploads/2015/07/photo-1429041966141-44d228a42775-1140x600.jpeg" class="post-thumbnail" alt="">
+            <article>
+                <div class="time-count">
+                    <p>개발자로 살아온지 <b>{{ profile.years }}년 {{ profile.months }}개월</b>이 지났습니다.</p>
                 </div>
-                <div class="content">
-                    <header class="entry-header">
-                        <h1>
-                            {{ article.title }}
-                        </h1>
-                    </header>
-                    <div class="entry-meta">
-                        <ul>
-                            <li>
-                                By {{ article.email }}
-                            </li>
-                            <li>
-                                /
-                            </li>
-                            <li>
-                                {{ article.created_format }}
-                            </li>
-                            <li>
-                                /
-                            </li>
-                            <li>
-                                {{ article.category_name }}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="entry-content" ng-bind-html="renderHtml(html)">
-                    </div>
+                <div ng-bind-html="renderHtml(html)">
                 </div>
             </article>
         </main>
@@ -81,11 +59,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
 	    <script src="/assets/js/jquery.min.js"></script>
-	    <script src="/assets/js/moment-with-locales.min.js"></script>
-	    <script src="/assets/js/URI.min.js"></script>
 	    <script src="/assets/js/showdown.js"></script>
+	    <script src="/assets/js/URI.min.js"></script>
+	    <script src="/assets/js/moment-with-locales.min.js"></script>
 	    <script src="/ui/semantic.js"></script>
 	    <script src="/js/common.js"></script>
-	    <script src="/js/view.js"></script>
+	    <script src="/js/profile/index.js"></script>
 	</body>
 </html>

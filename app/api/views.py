@@ -30,6 +30,11 @@ import logging
 User = get_user_model()
 logger = logging.getLogger('command')
 
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = models.Profile.objects.all().order_by('-id')
+    serializer_class = serializers.ProfileSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
+
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = models.Board.objects.all()
     serializer_class = serializers.BoardSerializer

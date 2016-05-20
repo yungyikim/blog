@@ -1,0 +1,100 @@
+
+body > header {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body > header .dummy {
+    display: inline-block;
+    vertical-align: middle;
+    height: 70px;
+}
+
+body > header h3 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    margin: 0;
+}
+
+body > header nav {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 160px);
+    text-align: right;
+}
+
+body > header nav ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+body > header nav li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body > header nav li + li {
+    margin-left: 15px;
+}
+
+main {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    padding: 10px;
+}
+
+.ui.form textarea {
+    line-height: 1.5;
+}
+
+.preview-title {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ccc;
+    margin-bottom: 15px;
+}
+
+#save {
+    margin-top: 10px;
+}
+
+
+body > footer {
+    background-color: #222222;
+    width: 100%;
+    display: table;
+    height: 80px;
+}
+
+body > footer .wrap {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+body > footer .copyright {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #6f6f6f;
+}
+
+body > footer .copyright p {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+body > footer .copyright p a {
+    color: #999;
+    font-weight: bold;
+}
+
+@media (min-width: 840px) {
+
+}
