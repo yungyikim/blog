@@ -10,6 +10,11 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
 
+    location /api/ {
+        include         uwsgi_params;
+        uwsgi_pass      unix:///tmp/webapp.sock;
+    }
+
     location ~ ^/([0-9]+)/?$ {
         try_files $uri /viewer.html;
     }
@@ -22,16 +27,32 @@ server {
         try_files $uri $uri/ @htmlext;
     }
 
-    location ~ \.html$ {
-        try_files $uri = 404;
-    }
-
     location @htmlext {
         rewrite ^(.*)$ $1.html last;
     }
 
-    location /api/ {
-        include         uwsgi_params;
-        uwsgi_pass      unix:///tmp/webapp.sock;
+    location ~ ^/tech/?$ {
+        try_files $uri /list.html;
     }
+
+    location ~ ^/tech/([a-zA-Z]+)/?$ {
+        try_files $uri /edit.html;
+    }
+
+    location ~ ^/info/?$ {
+        try_files $uri /list.html;
+    }
+
+    location ~ ^/info/([a-zA-Z]+)/?$ {
+        try_files $uri /edit.html;
+    }
+
+    location ~ ^/([a-zA-Z]+)/([0-9]+)/?$ {
+        try_files $uri /view.html;
+    }
+
+    location ~ \.html$ {
+        try_files $uri = 404;
+    }
+
 }
