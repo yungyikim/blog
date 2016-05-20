@@ -57,6 +57,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             'summary',
             'content_type',
             'content',
+            'image_url',
             'group',
             'sequence',
             'depth',

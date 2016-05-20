@@ -47,6 +47,7 @@ class Article(models.Model):
     summary = models.TextField()
     content_type = models.CharField(max_length=1, choices=CONTENT_TYPES)
     content = models.TextField()
+    image_url = models.CharField(blank=True, max_length=128)
     group = models.IntegerField(null=False, unique=False)
     sequence = models.IntegerField(null=False, unique=False)
     depth = models.IntegerField(null=False)

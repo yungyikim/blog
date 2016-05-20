@@ -58,6 +58,10 @@ app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
                             category_name = 'Uncategorized';
                         }
 
+                        if (article.image_url === '') {
+                            article.image_url = 'http://demo.shapedtheme.com/kotha/wp-content/uploads/2015/07/photo-1429041966141-44d228a42775-1140x600.jpeg';
+                        }
+
                         var m = moment(article.created);
                         article.category_name = category_name;
                         article.created_format = m.format('ll');
