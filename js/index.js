@@ -15,6 +15,43 @@ function Page() {
 Page.prototype = {
     init: function() {
         var self = this;
+
+        $('#blog .pusher .masthead').removeClass('zoomed');
+
+        if($(window).width() > 600) {
+            $('body')
+              .visibility({
+                offset         : -10,
+                observeChanges : false,
+                once           : false,
+                continuous     : false,
+                onTopPassed: function() {
+                  requestAnimationFrame(function() {
+                    $('.following.bar')
+                      .addClass('light fixed')
+                      .find('.menu')
+                        .removeClass('inverted')
+                    ;
+                    $('.following .additional.item')
+                      .transition('scale in', 750)
+                    ;
+                  });
+                },
+                onTopPassedReverse: function() {
+                  requestAnimationFrame(function() {
+                    $('.following.bar')
+                      .removeClass('light fixed')
+                      .find('.menu')
+                        .addClass('inverted')
+                        .find('.additional.item')
+                          .transition('hide')
+                    ;
+                  });
+                }
+              })
+            ;
+          }
+
         var url = new Url(jQuery(location).attr('href'));
         console.log(url.query.page);
         if (url.query.page) this._page = url.query.page;
@@ -27,7 +64,7 @@ Page.prototype = {
             self.bind();
         });
 
-        $('.container').slick({
+        $('section.featured .container').slick({
             dots: false,
             infinite: false,
             speed: 300,

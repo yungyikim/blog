@@ -30,6 +30,12 @@ body, h1, h2, h3, h4, h5, h6, li, p {
     font-smoothing: antialiased;
 }
 
+.malgun-gothic {
+    font-family: "Noto Sans DemiLight", "Malgun Gothic";
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
 body {
     padding: 0;
     margin: 0;

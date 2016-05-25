@@ -223,6 +223,9 @@ class UserViewSet(viewsets.ModelViewSet):
     # 회원정보 목록이 아니라
     # 로그인된 본인 정보만을 반환한다
     def list(self, request, *args, **kwargs):
+        if request.user.is_authenticated() is False:
+            return HttpResponse(status=status.HTTP_403_FORBIDDEN)
+
         obj = User.objects.get(pk=request.user.get_id())
         serializer = self.get_serializer(obj)
         return Response(serializer.data)
