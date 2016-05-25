@@ -18,7 +18,7 @@
 .notokr-thin { font-family:notokr-thin !important; }
 */
 
-body, h1, h2, h3, h4, h5, h6, li, p {
+body, h1, h2, h3, h4, h5, h6, li, p, a {
     font-family: "Noto Sans DemiLight", "Malgun Gothic";
     /*
     font-family:”Nanum Gothic”,”NanumGothic” !important ;
