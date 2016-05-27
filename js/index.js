@@ -52,6 +52,10 @@ Page.prototype = {
             ;
           }
 
+        $(".ui.sidebar")
+            .sidebar('setting', 'transition', 'overlay')
+            .sidebar('attach events','.launch');
+
         var url = new Url(jQuery(location).attr('href'));
         console.log(url.query.page);
         if (url.query.page) this._page = url.query.page;

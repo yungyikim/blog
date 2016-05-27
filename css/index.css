@@ -263,7 +263,22 @@
     }
 }
 
+@media only screen and (min-width : 650px) {
+    #blog .main.menu {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 649px) {
+    #blog .following.bar {
+        display: none;
+    }
+}
+
 @media only screen and (max-width : 600px) {
+    #blog .masthead .container {
+        padding: 6rem 0rem;
+    }
     #blog .masthead.segment h1 .title {
         font-size: 0.8em;
         margin-bottom: 20px;
