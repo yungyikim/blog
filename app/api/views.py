@@ -24,8 +24,10 @@ from django import forms
 from datetime import datetime
 import api.models as models
 import api.serializers as serializers
+import os
 import json
 import logging
+import shutil
 
 User = get_user_model()
 logger = logging.getLogger('command')
@@ -69,6 +71,56 @@ class ArticleViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly,)
 
+    def createStaticFile(self, id, request):
+        logger.info('createStaticFile')
+        project_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../..'))
+        dist_dir = project_dir + '/dist/'
+
+        logger.info(request)
+
+        # SEO
+        f = open(dist_dir+'/view.html', 'r')
+        data = f.read()
+        f.close()
+
+        data = data.decode("utf-8")
+        data = data.replace('$title$', request.data['title'])
+        data = data.replace('$description$', request.data['summary'])
+        data = data.replace('$content$', request.data['content'])
+        data = data.encode("utf-8")
+
+        logger.info(data)
+
+        obj = models.Board.objects.get(pk=request.data['board'])
+        target_link = '/'+obj.name+'/'+str(id)
+
+        logger.info(obj.name)
+
+        f = open(dist_dir+target_link+'.html', 'w')
+        f.write(data)
+        f.close()
+
+        # sitemap에 링크 추가
+        sitemap_file = '/sitemap.html'
+
+        if os.path.isfile(dist_dir+sitemap_file) == False:
+            shutil.copy(dist_dir+sitemap_file+'.bak', dist_dir+sitemap_file)
+
+        f = open(dist_dir+sitemap_file, 'r')
+        data = f.read()
+        f.close()
+
+        dummy_data = '$dummy$\n<li><a href="'+target_link+'">'+request.data['title']+'</a></li>\n'
+        data = data.decode("utf-8")
+        data = data.replace('$dummy$', dummy_data)
+        data = data.encode("utf-8")
+
+        logger.info(data)
+
+        f = open(dist_dir+'/sitemap.html', 'w')
+        f.write(data)
+        f.close()
+
     def create(self, request, *args, **kwargs):
         id = 1
         obj = models.Article.objects.last()
@@ -80,6 +132,11 @@ class ArticleViewSet(viewsets.ModelViewSet):
         request.data['sequence'] = 1
         request.data['depth'] = 0
         request.data['owner'] = request.user.get_id()
+
+        logger.info(request.data['board'])
+
+        # 정적파일 생성
+        self.createStaticFile(id, request)
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
