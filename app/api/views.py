@@ -31,6 +31,7 @@ import shutil
 
 User = get_user_model()
 logger = logging.getLogger('command')
+host = 'http://www.yungyikim.com'
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all().order_by('-id')
@@ -101,24 +102,13 @@ class ArticleViewSet(viewsets.ModelViewSet):
         f.close()
 
         # sitemap에 링크 추가
-        sitemap_file = '/sitemap.html'
+        sitemap_file = '/sitemap.txt'
 
         if os.path.isfile(dist_dir+sitemap_file) == False:
             shutil.copy(dist_dir+sitemap_file+'.bak', dist_dir+sitemap_file)
 
-        f = open(dist_dir+sitemap_file, 'r')
-        data = f.read()
-        f.close()
-
-        dummy_data = '$dummy$\n<li><a href="'+target_link+'">'+request.data['title']+'</a></li>\n'
-        data = data.decode("utf-8")
-        data = data.replace('$dummy$', dummy_data)
-        data = data.encode("utf-8")
-
-        logger.info(data)
-
-        f = open(dist_dir+'/sitemap.html', 'w')
-        f.write(data)
+        f = open(dist_dir+sitemap_file, 'a')
+        f.write(host+target_link+'\n')
         f.close()
 
     def create(self, request, *args, **kwargs):
