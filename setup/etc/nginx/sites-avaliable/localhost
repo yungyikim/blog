@@ -51,13 +51,7 @@ server {
     }
 
 
-    #location ~ ^/([a-zA-Z]+)/([0-9]+)/?$ {
-    #    try_files $uri /view.html;
-    #}
-
-
     location ~ \.html$ {
         try_files $uri = 404;
     }
-
 }
