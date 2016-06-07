@@ -110,7 +110,7 @@
 
     #blog main {
         margin-top: 44px;
-        padding-top: 44px;
-        padding-bottom: 44px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
