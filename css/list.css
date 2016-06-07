@@ -1,3 +1,7 @@
+#blog .ui.sidebar.menu,
+#blog .ui.fixed.menu {
+    background-color: steelblue;
+}
 
 #blog .following.bar {
   position: fixed;
@@ -99,8 +103,9 @@ a:hover.more-link {
     color: #fff;
 }
 
-.footer.segment {
+.ui.footer.segment {
   padding: 4em 0em;
+  background-color: steelblue;
 }
 
 @media only screen and (max-width : 1040px) {

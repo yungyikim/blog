@@ -1,3 +1,7 @@
+#blog .ui.sidebar.menu,
+#blog .ui.fixed.menu {
+    background-color: steelblue;
+}
 
 #blog .following.bar {
   position: fixed;
@@ -58,8 +62,9 @@ body > main article .time-count p {
     font-size: 1.2rem;
 }
 
-.footer.segment {
+.ui.footer.segment {
   padding: 4em 0em;
+  background-color: steelblue;
 }
 
 
