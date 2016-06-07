@@ -1,0 +1,139 @@
+#blog .ui.sidebar.menu,
+#blog .ui.fixed.menu {
+    background-color: steelblue;
+}
+
+#blog .following.bar {
+  position: fixed;
+  top: 0px;
+  z-index: 900;
+  left: 0%;
+  padding: 2em 0em;
+  width: 100%;
+  box-shadow: 0px 0px 0px 0px transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    padding 0.5s ease,
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease
+  ;
+}
+
+#blog .light.following.bar {
+  padding: 1em 0em;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+}
+
+#blog .following.bar .menu a + a {
+    margin-left: 15px;
+}
+
+#blog main {
+    margin-top: 70px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.article {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.article + .article {
+    margin-top: 50px;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.article .content {
+    padding: 30px;
+}
+
+.entry-header {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.entry-meta {
+    color: #9e9e9e;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.entry-meta ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+.entry-meta li {
+    display: inline-block;
+}
+
+.entry-meta li + li {
+    margin-left: 5px;
+}
+
+a.more-link {
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    width: 135px;
+    padding: 6px 15px;
+    margin: 25px auto 0;
+    color: #777;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+}
+
+a:hover.more-link {
+    background-color: #00ACDF;
+    border-color: #00ACDF;
+    color: #fff;
+}
+
+.ui.footer.segment {
+  padding: 4em 0em;
+  background-color: steelblue;
+}
+
+@media only screen and (max-width : 1040px) {
+  #blog .following.bar .menu > .item {
+    margin-right: 0.5em;
+  }
+}
+
+@media only screen and (max-width : 810px) {
+  #blog .following.bar .menu > .item {
+    margin-right: 0.75em;
+  }
+}
+
+@media only screen and (min-width : 650px) {
+    #blog .main.menu {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 649px) {
+    #blog .following.bar {
+        display: none;
+    }
+
+    #blog main {
+        margin-top: 44px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

@@ -34,4 +34,6 @@ urlpatterns = [
 	url(r'^api/docs/', include('rest_framework_swagger.urls')),
 	url(r'^api/auth/signin/', views.signin),
 	url(r'^api/auth/signout/', views.signout),
+    url(r'^api/thirdauth', views.thirdauth, name='thirdauth'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
 ]

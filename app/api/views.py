@@ -1,7 +1,9 @@
 #-*- coding: utf-8 -*-
 
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
+from django.template.context import RequestContext
 from django.conf import settings
 from rest_framework import viewsets
 from rest_framework import status
@@ -32,6 +34,12 @@ import shutil
 User = get_user_model()
 logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
+
+def thirdauth(request):
+   context = RequestContext(request,
+                           {'user': request.user})
+   return render_to_response('thirdauth/base.html',
+                             context_instance=context)
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all().order_by('-id')
