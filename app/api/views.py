@@ -1,8 +1,6 @@
 #-*- coding: utf-8 -*-
 
-from django.shortcuts import render
-from django.shortcuts import render_to_response
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404
 from django.template.context import RequestContext
 from django.conf import settings
 from rest_framework import viewsets
@@ -36,9 +34,11 @@ logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
 
 def thirdauth(request):
-   context = RequestContext(request,
-                           {'user': request.user})
-   return render_to_response('thirdauth/base.html',
+   context = RequestContext(request, {'request': request, 'user': request.user})
+   logger.info(context)
+   logger.info(request.user)
+
+   return render_to_response('thirdauth/main.html',
                              context_instance=context)
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -223,7 +223,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
             queryset = models.Article.objects.filter(group=obj.group).filter(content_type='C').order_by('sequence')
             serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
-
+"""
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.order_by(User.USERNAME_FIELD)
     serializer_class = serializers.UserSerializer
@@ -233,6 +233,7 @@ class UserViewSet(viewsets.ModelViewSet):
     # signup
     @csrf_exempt
     def create(self, request, *args, **kwargs):
+        print('create')
         logger.info('create')
         data = {
             'msg': 'success',
@@ -267,13 +268,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
 
-        """
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-        """
 
     # 회원정보 목록이 아니라
     # 로그인된 본인 정보만을 반환한다
@@ -284,7 +278,16 @@ class UserViewSet(viewsets.ModelViewSet):
         obj = User.objects.get(pk=request.user.get_id())
         serializer = self.get_serializer(obj)
         return Response(serializer.data)
+"""
 
+
+"""
+def signout(request):
+    logout(request)
+    return redirect('/')
+"""
+
+"""
 @csrf_exempt
 def signout(request):
     data = {
@@ -301,7 +304,9 @@ def signout(request):
         data['msg'] = 'post only'
 
     return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
+"""
 
+"""
 @csrf_exempt
 def signin(request):
     data = {
@@ -337,3 +342,4 @@ def signin(request):
         data['msg'] = 'post only'
 
     return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
+"""

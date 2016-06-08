@@ -65,9 +65,7 @@
                 </div>
             </div>
             <main ng-controller="MainCtrl">
-                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a> 
-                {% block content %}
-                {% endblock %}
+                {% block main %}{% endblock %}
             </main>
         </div>
         <div class="ui inverted vertical footer segment">

@@ -21,7 +21,7 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
+#router.register(r'users', views.UserViewSet)
 router.register(r'articles', views.ArticleViewSet)
 router.register(r'categorys', views.CategoryViewSet)
 router.register(r'boards', views.BoardViewSet)
@@ -32,8 +32,9 @@ urlpatterns = [
     url(r'^api/admin/', admin.site.urls),
 	url(r'^api/', include(router.urls)),
 	url(r'^api/docs/', include('rest_framework_swagger.urls')),
-	url(r'^api/auth/signin/', views.signin),
-	url(r'^api/auth/signout/', views.signout),
+	#url(r'^api/auth/signin/', views.signin),
+	#url(r'^api/auth/signout/', views.signout),
     url(r'^api/thirdauth', views.thirdauth, name='thirdauth'),
     url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 ]
