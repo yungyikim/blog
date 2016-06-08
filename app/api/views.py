@@ -33,6 +33,50 @@ User = get_user_model()
 logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
 
+def profile_edit(request):
+    profile = models.Profile.objects.last()
+    logger.info(profile)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'profile': profile
+        })
+        
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('profile/edit.html', context_instance=context)
+
+def profile(request):
+    profile = models.Profile.objects.last()
+    logger.info(profile)
+
+    queryset = models.Profile.objects.all().order_by('-id')
+    logger.info(queryset)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'profile': profile
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('profile/view.html', context_instance=context)
+
+def home(request):
+    context = RequestContext(request, {'request': request, 'user': request.user})
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('home.html', context_instance=context)
+
 def thirdauth(request):
    context = RequestContext(request, {'request': request, 'user': request.user})
    logger.info(context)

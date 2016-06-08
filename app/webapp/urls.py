@@ -35,6 +35,9 @@ urlpatterns = [
 	#url(r'^api/auth/signin/', views.signin),
 	#url(r'^api/auth/signout/', views.signout),
     url(r'^api/thirdauth', views.thirdauth, name='thirdauth'),
+    url(r'^api/home', views.home, name='home'),
+    url(r'^api/profile/edit', views.profile_edit, name='profile_edit'),
+    url(r'^api/profile', views.profile, name='profile'),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
 ]

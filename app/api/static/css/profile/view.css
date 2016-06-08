@@ -1,0 +1,40 @@
+.light.following.bar + main {
+    margin-top: 70px;
+}
+
+main {
+    max-width: 800px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main header {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+main section {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+article .time-count {
+    padding-bottom: 20px;
+}
+
+article .time-count p {
+    font-size: 1.2rem;
+}
+
+article #source {
+    display: none;
+}
+
+@media only screen and (max-width : 649px) {
+    .light.following.bar + main {
+        margin-top: 45px;
+    }
+}

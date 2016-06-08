@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YungyiKim's 개발 블로그, 프로필, 기술 노트, 정보 노트, 보유 스킬 : nginx + django + mysql + elasticsearch + aws + gulp + angularjs + jquery + bootstrap + semantic-ui">
+    <meta name="author" content="">
+    <title>개발자로서 살아온 이력 정리</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/profile/view.css' %}" rel="stylesheet">
+</head>
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <header>
+        {% if user and not user.is_anonymous %}
+        <h3>{{ user.get_full_name }} 님</h3>
+        {% else %}
+        <h3>로그인</h3>
+        {% endif %}
+    </header>
+    <section>
+        <article>
+            <div class="time-count">
+                <p>개발자로 살아온지 <b>{$ profile.years $}년 {$ profile.months $}개월</b>이 지났습니다.</p>
+            </div>
+            <div id="source">{{ profile.content }}</div>
+            <div ng-bind-html="renderHtml(html)">
+            </div>
+        </article>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/assets/js/showdown.js"></script>
+<script src="/assets/js/URI.min.js"></script>
+<script src="/assets/js/moment-with-locales.min.js"></script>
+<script src="{% static 'js/profile/view.js' %}"></script>
+{% endblock %}

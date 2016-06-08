@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YungyiKim's 개발 블로그, 프로필, 기술 노트, 정보 노트, 보유 스킬 : nginx + django + mysql + elasticsearch + aws + gulp + angularjs + jquery + bootstrap + semantic-ui">
+    <meta name="author" content="">
+    <title>Yungyikim's 블로그</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/slick.css" rel="stylesheet">
+    <link href="/assets/css/slick-theme.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <div class="masthead segment bg zoomed">
+        <div class="ui container">
+            <div class="introduction">
+                <h1 class="ui header">
+                    <span class="title">
+                        Yungyikim's Blog
+                    </span>
+                </h1>
+                <div class="description malgun-gothic">
+                    <h3>About Me</h3>
+                    <p>YungyiKim의 개발 이력 + 보유 스킬 소개</p>
+                    <h3>기술 노트</h3>
+                    <p>기술적인 내용을 정리하는 공간</p>
+                    <h3>정보 노트</h3>
+                    <p>정보성 자료를 정리하는 공간</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="featured">
+        <div class="container">
+            <div>
+                <img class="grayimg nginx" src="/img/nginx.svg">
+            </div>
+            <div>
+                <img class="grayimg django" src="/img/django-community.svg">
+            </div>
+            <div>
+                <img class="grayimg mysql" src="/img/mysql-5.svg">
+            </div>
+            <div>
+                <img class="grayimg elasticsearch" src="/img/elasticsearch.svg">
+            </div>
+            <div>
+                <img class="grayimg aws" src="/img/amazon-web-services.svg">
+            </div>
+            <div>
+                <img class="grayimg gulp" src="/img/gulp-1.svg">
+            </div>
+            <div>
+                <img class="grayimg angular" src="/img/angular-icon.svg">
+            </div>
+            <div>
+                <img class="grayimg jquery" src="/img/jquery-1.svg">
+            </div>
+            <div>
+                <img class="grayimg bootstrap" src="/img/bootstrap-4.svg">
+            </div>
+            <div>
+                <img class="grayimg semantic-ui" src="/img/semantic-ui.svg">
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/assets/js/url.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
