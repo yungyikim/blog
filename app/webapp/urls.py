@@ -30,7 +30,6 @@ router.register(r'profiles', views.ProfileViewSet)
 urlpatterns = [
     url(r'^api/grappelli/', include('grappelli.urls')),
     url(r'^api/admin/', admin.site.urls),
-	url(r'^api/', include(router.urls)),
 	url(r'^api/docs/', include('rest_framework_swagger.urls')),
 	#url(r'^api/auth/signin/', views.signin),
 	#url(r'^api/auth/signout/', views.signout),
@@ -38,6 +37,13 @@ urlpatterns = [
     url(r'^api/home', views.home, name='home'),
     url(r'^api/profile/edit', views.profile_edit, name='profile_edit'),
     url(r'^api/profile', views.profile, name='profile'),
+    url(r'^api/tech/edit', views.tech_edit, name='tech_edit'),
+    url(r'^api/tech/(\d+)/?$', views.tech_view, name='tech_view'),
+    url(r'^api/tech', views.tech, name='tech'),
+    url(r'^api/info/edit', views.info_edit, name='info_edit'),
+    url(r'^api/info/(\d+)/?$', views.info_view, name='info_view'),
+    url(r'^api/info', views.info, name='info'),
+	url(r'^api/', include(router.urls)),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
 ]

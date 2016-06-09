@@ -1,0 +1,78 @@
+.light.following.bar + main {
+    margin-top: 70px;
+}
+
+main {
+    max-width: 800px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main header {
+    text-align: right;
+    padding: 20px;
+}
+
+main section {
+    padding: 20px;
+    background-color: #fff;
+}
+
+main section #source {
+    display: none;
+}
+
+article {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+
+article .thumbnail img {
+    width: 100%;
+}
+
+article .content {
+    padding: 30px;
+}
+
+article .entry-header {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+article .entry-meta {
+    color: #9e9e9e;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+article .entry-meta ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+article .entry-meta li {
+    display: inline-block;
+}
+
+article .entry-meta li + li {
+    margin-left: 5px;
+}
+
+
+
+
+@media only screen and (max-width : 649px) {
+    .light.following.bar + main {
+        margin-top: 45px;
+    }
+}

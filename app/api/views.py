@@ -20,6 +20,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.validators import validate_email
 from django.core import mail
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 from django import forms
 from datetime import datetime
 import api.models as models
@@ -33,6 +34,148 @@ User = get_user_model()
 logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
 
+def info_view(request, *args):
+    article = models.Article.objects.get(pk=args[0])
+    category = models.Category.objects.get(pk=article.category_id)
+    user = models.CustomUser.objects.get(pk=article.owner_id)
+    article.category_name = category.name
+    article.username = user.username
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'article': article
+        })
+
+    logger.info(args[0])
+
+    return render_to_response('info/view.html', context_instance=context)
+
+def info_edit(request):
+    board = models.Board.objects.filter(name='info')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+
+    logger.info(board)
+    logger.info(categorys)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'categorys': categorys
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('info/edit.html', context_instance=context)
+
+
+def info(request):
+    page_size = 5
+
+    board = models.Board.objects.filter(name='info')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+    queryset = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
+    p = Paginator(queryset, page_size)
+    articles = p.page(1).object_list
+
+    for article in articles:
+        category = models.Category.objects.get(pk=article.category_id)
+        user = models.CustomUser.objects.get(pk=article.owner_id)
+        article.category_name = category.name
+        article.username = user.username
+        logger.info(article)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'articles': articles,
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('info/list.html', context_instance=context)
+
+def tech_view(request, *args):
+    article = models.Article.objects.get(pk=args[0])
+    category = models.Category.objects.get(pk=article.category_id)
+    user = models.CustomUser.objects.get(pk=article.owner_id)
+    article.category_name = category.name
+    article.username = user.username
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'article': article
+        })
+
+    logger.info(args[0])
+
+    return render_to_response('tech/view.html', context_instance=context)
+
+def tech_edit(request):
+    board = models.Board.objects.filter(name='tech')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+
+    logger.info(board)
+    logger.info(categorys)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'categorys': categorys
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('tech/edit.html', context_instance=context)
+
+
+def tech(request):
+    page_size = 5
+
+    board = models.Board.objects.filter(name='tech')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+    queryset = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
+    p = Paginator(queryset, page_size)
+    articles = p.page(1).object_list
+
+    for article in articles:
+        category = models.Category.objects.get(pk=article.category_id)
+        user = models.CustomUser.objects.get(pk=article.owner_id)
+        article.category_name = category.name
+        article.username = user.username
+        logger.info(article)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'articles': articles,
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('tech/list.html', context_instance=context)
+
 def profile_edit(request):
     profile = models.Profile.objects.last()
     logger.info(profile)
@@ -44,7 +187,7 @@ def profile_edit(request):
             'user': request.user,
             'profile': profile
         })
-        
+
     logger.info(context)
     logger.info(request.user)
 

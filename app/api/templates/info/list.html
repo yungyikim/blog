@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YungyiKim's 개발 블로그, 프로필, 기술 노트, 정보 노트, 보유 스킬 : nginx + django + mysql + elasticsearch + aws + gulp + angularjs + jquery + bootstrap + semantic-ui">
+    <meta name="author" content="">
+    <title>정보 노트 - 목록</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/info/list.css' %}" rel="stylesheet">
+</head>
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <header>
+        {% if user and not user.is_anonymous %}
+        <h3 id="user-info" data-id="{{ user.get_id }}">{{ user.get_full_name }} 님</h3>
+        {% else %}
+        <h3 id="user-info">로그인</h3>
+        {% endif %}
+    </header>
+    <section>
+        {% for article in articles %}
+        <article>
+            <div class="thumbnail">
+                <img src="{{ article.image_url }}" class="post-thumbnail" alt="">
+            </div>
+            <div class="content">
+                <header class="entry-header">
+                    <h1>
+                        <a href="/{{ board.name }}/{{ article.id }}/">{{ article.title }}</a>
+                    </h1>
+                </header>
+                <div class="entry-meta">
+                    <ul>
+                        <li>
+                            By {{ article.username }}
+                        </li>
+                        <li>
+                            /
+                        </li>
+                        <li>
+                            {{ article.created }}
+                        </li>
+                        <li>
+                            /
+                        </li>
+                        <li>
+                            {{ article.category_name }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="entry-summary">
+                    <div  ng-bind-html="renderHtml(article.html)"></div>
+                    <p>
+                        <a href="/{{ board.name }}/{{ article.id }}/" class="more-link">Keep Reading</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/assets/js/showdown.js"></script>
+<script src="/assets/js/URI.min.js"></script>
+<script src="{% static 'js/info/list.js' %}"></script>
+{% endblock %}

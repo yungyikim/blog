@@ -8,16 +8,12 @@ app.config(function($httpProvider, $interpolateProvider) {
     angular.injector(['ngCookies']).invoke(['$cookies', function(_$cookies_) {
         $cookies = _$cookies_;
     }]);
-    console.log($cookies.get('csrftoken'));
     $httpProvider.defaults.headers.post['X-CSRFToken'] = $cookies.get('csrftoken');
 });
 app.controller('MainCtrl', ['$scope', '$http', '$sce', '$cookies', function($scope, $http, $sce, $cookies) {
     $scope.user = {
         id: $('#user-info').attr('data-id')
     };
-
-    console.log($cookies.get('csrftoken'));
-
 
     $(".ui.sidebar")
         .sidebar('setting', 'transition', 'overlay')
@@ -63,6 +59,5 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', '$cookies', function($sco
     };
 
     $scope.content = $('#source')[0].outerText;
-    console.log($scope.content);
     $scope.preview_content();
 }]);

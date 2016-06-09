@@ -21,47 +21,47 @@ server {
         rewrite ^(.*)$ $1.html last;
     }
 
-    location /api/ {
+    location ~ ^/api/ {
         include         uwsgi_params;
         uwsgi_pass      unix:///tmp/webapp.sock;
     }
 
-    location /login/ {
+    location ~ ^/login/ {
         include         uwsgi_params;
         uwsgi_pass      unix:///tmp/webapp.sock;
     }
 
-    location /logout/ {
+    location ~ ^/logout/ {
         include         uwsgi_params;
         uwsgi_pass      unix:///tmp/webapp.sock;
     }
 
-    location /complete/ {
+    location ~ ^/complete/ {
         include         uwsgi_params;
         uwsgi_pass      unix:///tmp/webapp.sock;
     }
 
-    location ~ /tech/?$ {
+    location ~ ^/tech/?$ {
         try_files $uri /list.html;
     }
 
-    location ~ /tech/edit/?$ {
+    location ~ ^/tech/edit/?$ {
         try_files $uri /edit.html;
     }
 
-    location ~ /tech/([0-9]+)/?$ {
+    location ~ ^/tech/([0-9]+)/?$ {
         rewrite ^/tech/([0-9]+)/?$ /tech/$1.html;
     }
 
-    location ~ /info/?$ {
+    location ~ ^/info/?$ {
         try_files $uri /list.html;
     }
 
-    location ~ /info/edit/?$ {
+    location ~ ^/info/edit/?$ {
         try_files $uri /edit.html;
     }
 
-    location ~ /info/([0-9]+)/?$ {
+    location ~ ^/info/([0-9]+)/?$ {
         rewrite ^/info/([0-9]+)/?$ /info/$1.html;
     }
 
