@@ -22,9 +22,7 @@
 <main>
     <header>
         {% if user and not user.is_anonymous %}
-        <h3>{{ user.get_full_name }} 님</h3>
-        {% else %}
-        <h3>로그인</h3>
+        <h3>환영합니다. {{ user.get_full_name }} 님</h3>
         {% endif %}
     </header>
     <section>
