@@ -1,4 +1,9 @@
 server {
+    server_name yungyikim-example.com;
+    return 301 $scheme://www.yungyikim-example.com:8000$request_uri;
+}
+
+server {
     listen 8000;
     server_name www.yungyikim-example.com;
 

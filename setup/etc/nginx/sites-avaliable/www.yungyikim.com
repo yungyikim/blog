@@ -1,4 +1,9 @@
 server {
+    server_name yungyikim.com;
+    return 301 $scheme://www.yungyikim.com$request_uri;
+}
+
+server {
     listen 80;
     server_name www.yungyikim.com;
 
