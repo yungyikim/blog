@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+/*
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfkljOGVJb3RMR200clRfUTVVdXlaRElPRTV3VGlNZVZ3ay1EYjdiZjJockk/notokr-regular.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfndGUGZVNzBEbVdkZGg0M0R1OElFeXcteXFVNUFOYlQ4TUdNWHZVQlJHaXM/notokr-black.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfnV0d3J5S21BSFdGUXctekQ1eHJoczF2OUcyTGZna3laMlg2MWR6cWoyV1E/notokr-bold.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfnVVTFJoaHQ2R0xQNURCSmp0M1BrWVQ5SVFKN05uaTRabC1XeFRpUm51T2c/notokr-demilight.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfk5lRk1WVjhQWVRHRldCVEw0TU1qMHhvNEdfM1E0cjZ1Z2ZHRDFfcWRVSDA/notokr-light.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfmN1U19nTHpWVFd2NHA2dXJ4c0FvOEdVcF9mc3ZfcWNyZjRDZ2plMy12SzQ/notokr-medium.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCflRiaUxHOFVCcXVfWmpqeERVZ3AzcDAtM2FRV25XclJDRnVrTVVqamZJcEE/notokr-thin.css");
+
+.notokr-regular { font-family:notokr-regular !important; }
+.notokr-black { font-family:notokr-black !important; }
+.notokr-bold { font-family:notokr-bold !important; }
+.notokr-demilight { font-family:notokr-demilight !important; }
+.notokr-light { font-family:notokr-light !important; }
+.notokr-medium { font-family:notokr-medium !important; }
+.notokr-thin { font-family:notokr-thin !important; }
+*/
+
+body, h1, h2, h3, h4, h5, h6, li, p, a {
+    font-family: "Noto Sans DemiLight", "Malgun Gothic";
+    /*
+    font-family:”Nanum Gothic”,”NanumGothic” !important ;
+    */
+    /*
+    font-family:notokr-regular !important;
+    */
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+.malgun-gothic {
+    font-family: "Noto Sans DemiLight", "Malgun Gothic";
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 500;
+    -webkit-font-smoothing: initial;
+    font-smoothing: initial;
+}
+
+@media (max-width: 640px) {
+    body > header .dummy {
+        display: none;
+    }
+
+    body > header h3 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    body > header nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+}

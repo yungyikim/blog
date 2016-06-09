@@ -1,17 +1,20 @@
 server {
-    listen 80;
-    server_name www.yungyikim.com;
+    listen 8000;
+    server_name www.yungyikim-example.com;
 
     # 데이터 업로드 용량 제한
     client_max_body_size 5M;
 
-	root    /home/ubuntu/blog/dist;
+    rewrite_log on;
+    error_log  /tmp/nginx/localhost.error.log debug;
+
+	root    /Users/kimyungyi/documents/Projects/blog/dist;
     index   index.html index.htm;
 
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static/ {
-    	root    /home/ubuntu/blog/dist;
+    	root    /Users/kimyungyi/documents/Projects/blog/dist;
     }
 
     location / {
@@ -22,5 +25,4 @@ server {
     location ~ \.html$ {
         try_files $uri = 404;
     }
-
 }

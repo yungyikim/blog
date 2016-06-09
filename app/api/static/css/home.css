@@ -38,7 +38,7 @@
   opacity: 0.45;
 }
 #blog .masthead.bg:after {
-    background-image: url("/img/bg.jpg");
+    background-image: url("/static/img/bg.jpg");
 }
 #blog .masthead,
 #blog .masthead:after {

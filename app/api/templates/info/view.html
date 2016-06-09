@@ -11,7 +11,7 @@
     <title>{{ article.title }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/common.css" rel="stylesheet">
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/info/view.css' %}" rel="stylesheet">
 </head>
@@ -68,7 +68,7 @@
 
 
 {% block scripts %}
-<script src="/assets/js/showdown.js"></script>
-<script src="/assets/js/URI.min.js"></script>
+<script src="/static/assets/js/showdown.js"></script>
+<script src="/static/assets/js/URI.min.js"></script>
 <script src="{% static 'js/info/view.js' %}"></script>
 {% endblock %}
