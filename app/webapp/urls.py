@@ -34,6 +34,7 @@ urlpatterns = [
 	#url(r'^auth/signin/', views.signin),
 	#url(r'^auth/signout/', views.signout),
     url(r'^thirdauth', views.thirdauth, name='thirdauth'),
+    url(r'^$', views.home, name='home'),
     url(r'^home', views.home, name='home'),
     url(r'^profile/edit', views.profile_edit, name='profile_edit'),
     url(r'^profile', views.profile, name='profile'),
