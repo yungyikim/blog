@@ -41,6 +41,25 @@
             </div>
         </div>
     </div>
+    <section class="social-login">
+        <div class="ui middle aligned one column centered grid">
+            <div class="row">
+                <div class="column aligned centered">
+                    <h3 class="header">소셜 로그인을 테스트 해보세요</h3>
+                    {% if user and not user.is_anonymous %}
+                    <h4 class="header">환영합니다. "{{ user.get_full_name }}" 님!</h4>
+                    <a href="{% url 'auth:logout' %}?next={{ request.path }}" class="small ui primary button">로그아웃</a>
+                    {% else %}
+                    <div class="login-wrap">
+                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="ui primary button facebook"><i class="fa fa-facebook" aria-hidden="true"></i> &nbsp; 페이스북 아이디로 로그인</a>
+                        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="ui primary button twitter"><i class="fa fa-twitter" aria-hidden="true"></i> &nbsp; 트위터 아이디로 로그인</a>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="ui primary button google"><i class="fa fa-google-plus" aria-hidden="true"></i> &nbsp; 구글 아이디로 로그인</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="featured">
         <div class="container">
             <div>

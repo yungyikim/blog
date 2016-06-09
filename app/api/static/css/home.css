@@ -121,7 +121,59 @@
     color: #000;
 }
 
-#blog section.featured {
+main section.social-login {
+    margin-top: 14px;
+    min-height: 400px;
+    background-image: url("/static/img/social-login-1280.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+main section.social-login > .ui.middle.grid {
+    height: 400px;
+}
+
+main section.social-login .header {
+    color: #fff;
+    margin: 10px;
+}
+
+main section.social-login .header .ui.basic.button {
+    padding: 10px;
+}
+
+main section.social-login .login-wrap {
+    width: 302px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(221,221,221,0.5);
+}
+
+main section.social-login .login-wrap .button {
+    width: 260px;
+    padding: 15px;
+}
+
+main section.social-login .login-wrap .button + .button {
+    margin-top: 10px;
+}
+
+main section.social-login .login-wrap .button.facebook {
+    background-color: #6D84B4;
+}
+
+main section.social-login .login-wrap .button.twitter {
+    background-color: #1DADEA;
+}
+
+main section.social-login .login-wrap .button.google {
+    background-color: #C93928;
+}
+
+main section.featured {
     min-height: 200px;
     padding-top: 20px;
     width: 80%;
@@ -129,26 +181,26 @@
     margin-right: auto;
 }
 
-#blog section.featured .container {
+main section.featured .container {
 }
 
-#blog section.featured ul {
+main section.featured ul {
     list-style-type: none;
     list-style-image: none;
     padding: 0;
     margin: 0;
 }
 
-#blog section.featured li {
+main section.featured li {
     display: inline-block;
     vertical-align: middle;
 }
 
-#blog section.featured li + li {
+main section.featured li + li {
     margin-left: 100px;
 }
 
-#blog section.featured .grayimg {
+main section.featured .grayimg {
     filter: url(filters.svg#grayscale); /* Firefox */
     filter: gray; /* IE */
     -webkit-filter: grayscale(1); /* Webkit */
@@ -156,55 +208,55 @@
     margin-right: auto;
  }
 
-#blog section.featured .grayimg:hover {
+main section.featured .grayimg:hover {
     filter: none;
     -webkit-filter: grayscale(0);
 }
 
-#blog section.featured .grayimg.nginx{
+main section.featured .grayimg.nginx{
     width: 160px;
     margin-top: 60px;
 }
 
-#blog section.featured .grayimg.django{
+main section.featured .grayimg.django{
     width: 140px;
     margin-top: 55px;
 }
 
-#blog section.featured .grayimg.mysql {
+main section.featured .grayimg.mysql {
     height: 160px;
 }
 
-#blog section.featured .grayimg.elasticsearch {
+main section.featured .grayimg.elasticsearch {
     height: 80px;
     margin-top: 35px;
 }
 
-#blog section.featured .grayimg.aws {
+main section.featured .grayimg.aws {
     margin-top: 55px;
 }
 
-#blog section.featured .grayimg.gulp {
+main section.featured .grayimg.gulp {
     height: 80px;
     margin-top: 35px;
 }
 
-#blog section.featured .grayimg.angular{
+main section.featured .grayimg.angular{
     height: 80px;
     margin-top: 35px;
 }
 
-#blog section.featured .grayimg.jquery{
+main section.featured .grayimg.jquery{
     width: 180px;
     margin-top: 55px;
 }
 
-#blog section.featured .grayimg.bootstrap {
+main section.featured .grayimg.bootstrap {
     height: 80px;
     margin-top: 35px;
 }
 
-#blog section.featured .grayimg.semantic-ui {
+main section.featured .grayimg.semantic-ui {
     height: 80px;
     margin-top: 35px;
 }
