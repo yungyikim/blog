@@ -12,7 +12,10 @@ main {
 
 main header {
     text-align: right;
-    padding: 20px;
+}
+
+main header h3 {
+    margin: 10px;
 }
 
 main section {

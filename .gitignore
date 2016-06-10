@@ -12,3 +12,4 @@ img/.DS_Store
 setup/nohup.out
 .vagrant/
 app/db.sqlite3
+setup/etc/uwsgi
