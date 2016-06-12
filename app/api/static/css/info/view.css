@@ -89,7 +89,7 @@ article .comments .comment .depth-2.ui.segment
 , article .comments .comment .depth-5.ui.segment
 , article .comments .comment .depth-6.ui.segment
 , article .comments .comment .depth-7.ui.segment {
-    margin-left: 60px;
+    margin-left: 50px;
 }
 
 article .comments .comment .comment-view h4.prev-comment-username {
@@ -128,6 +128,17 @@ article .comments .comment .comment-form {
 
 article .comments .comment .comment-form.default {
     display: block;
+}
+
+@media only screen and (max-width : 499px) {
+    article .comments .comment .depth-2.ui.segment
+    , article .comments .comment .depth-3.ui.segment
+    , article .comments .comment .depth-4.ui.segment
+    , article .comments .comment .depth-5.ui.segment
+    , article .comments .comment .depth-6.ui.segment
+    , article .comments .comment .depth-7.ui.segment {
+        margin-left: 40px;
+    }
 }
 
 @media only screen and (max-width : 649px) {
