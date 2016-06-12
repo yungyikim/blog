@@ -82,7 +82,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', '$cookies', function($sco
             console.log('success');
             console.log(data);
             alert('***** 게시물을 등록했습니다. *****');
-            location.href='/';
+            location.reload(true);
         })
         .error(function(data, status) {
             console.log(data);

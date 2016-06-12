@@ -27,17 +27,17 @@
     </header>
     <section>
         <div id="source">{{ article.content }}</div>
-        <article class="article" id="post-{{ article.id }}">
+        <article class="article" data-id="{{ article.id }}" data-board-id="{{ board.id }}" data-category-id="{{ category.id }}">
             <div class="thumbnail">
                 <img src="{{ article.image_url }}" class="post-thumbnail" alt="">
             </div>
-            <div class="content">
-                <header class="entry-header">
-                    <h1>
+            <div class="ui container">
+                <header class="header entry-header">
+                    <h1 id="title">
                         {{ article.title }}
                     </h1>
                 </header>
-                <div class="entry-meta">
+                <div class="ui basic segment entry-meta">
                     <ul>
                         <li>
                             By {{ article.username }}
@@ -56,9 +56,83 @@
                         </li>
                     </ul>
                 </div>
-                <div class="entry-content" ng-bind-html="renderHtml(article.html)">
+                <div id="content" class="ui basic segment entry-content" ng-bind-html="renderHtml(article.html)">
+                </div>
+                <div class="ui basic segment">
+                    <div class="comments">
+                        <div class="comment">
+                            <div class="comment-form default">
+                                <div class="ui container">
+                                    <div class="ui basic segment">
+                                        <div class="ui form">
+                                            <div class="field">
+                                                <input name="parent_id" type="hidden" value="{{ article.id }}">
+                                            </div>
+                                            <div class="field">
+                                                <textarea class="autosize" name="content" rows="1"></textarea>
+                                            </div>
+                                            <div class="field">
+                                                <a class="ui primary submit button" ng-click="post_comment({{ article.id }})">답글 남기기</a>
+                                            </div>
+                                            <div class="ui error message"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% for comment in comments %}
+                        <div class="comment">
+                            <div class="ui container">
+                                <div class="ui basic segment depth-{{ comment.depth }}">
+                                    <div class="comment-view">
+                                        <div class="ui grid">
+                                            <div class="ui twelve wide column">
+                                                <h4>{{ comment.username }} &nbsp; <i class="date">{{ comment.date }}</i></h4>
+                                            </div>
+                                            <div class="ui right floated right aligned four wide column">
+                                                <a ng-click="show_comment_form({{ comment.id }})">답글</a>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            {% if comment.depth > 2 %}
+                                            <h4 class="prev-comment-username">{{ comment.prev_comment_username }}</h4>
+                                            {% endif %}
+                                            <div class="ui form">
+                                                <div class="field">
+                                                    <textarea class="autosize" readonly="" rows="1">{{ comment.content }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-form depth-2" data-id="{{ comment.id }}">
+                                        <div class="ui form">
+                                            {% if comment.depth != 1 %}
+                                            <div class="field">
+                                                <h4>@ {{ comment.username }}</h4>
+                                            </div>
+                                            {% endif %}
+                                            <div class="field">
+                                                <input name="parent_id" type="hidden" value="{{ comment.id }}">
+                                            </div>
+                                            <div class="field">
+                                                <textarea class="autosize" name="content" rows="1"></textarea>
+                                            </div>
+                                            <div class="field">
+                                                <a class="ui primary submit button" ng-click="post_comment({{ comment.id }})">답글 남기기</a>
+                                            </div>
+                                            <div class="ui error message"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+
+                    </div>
                 </div>
             </div>
+
         </article>
     </section>
 </main>

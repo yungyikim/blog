@@ -15,7 +15,7 @@ main header {
 }
 
 main header h3 {
-    margin: 10px;
+    margin: 10px !important;
 }
 
 main section {
@@ -36,10 +36,6 @@ article {
 
 article .thumbnail img {
     width: 100%;
-}
-
-article .content {
-    padding: 30px;
 }
 
 article .entry-header {
@@ -69,8 +65,70 @@ article .entry-meta li + li {
     margin-left: 5px;
 }
 
+article .comments {
+    padding-top: 0;
+}
 
+article .comments textarea {
+    line-height: 1.7 !important;
+    resize: none !important;
+}
 
+article .comments .comment + .comment {
+}
+
+article .comments .comment .comment-view .ui.segment
+, article .comments .comment .comment-view .ui.menu
+, article .comments .comment .comment-view .ui.menu .item {
+    margin: 0;
+}
+
+article .comments .comment .depth-2.ui.segment
+, article .comments .comment .depth-3.ui.segment
+, article .comments .comment .depth-4.ui.segment
+, article .comments .comment .depth-5.ui.segment
+, article .comments .comment .depth-6.ui.segment
+, article .comments .comment .depth-7.ui.segment {
+    margin-left: 60px;
+}
+
+article .comments .comment .comment-view h4.prev-comment-username {
+    width: 80px;
+    position: absolute;
+    margin-top: 0;
+    color: #1678C2;
+}
+
+article .comments .comment .comment-view .prev-comment-username + .ui.form {
+    margin-left: 80px;
+}
+
+article .comments .comment .comment-view h4 .date {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+article .comments .comment .comment-view a {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+article .comments .comment .comment-view textarea {
+    border: 0;
+    padding: 0 !important;
+}
+
+article .comments .comment .comment-view .content {
+    padding: 10px 0;
+}
+
+article .comments .comment .comment-form {
+}
+
+article .comments .comment .comment-form.default {
+    display: block;
+}
 
 @media only screen and (max-width : 649px) {
     .light.following.bar + main {

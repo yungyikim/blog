@@ -23,6 +23,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django import forms
 from datetime import datetime
+from django.utils.dateformat import DateFormat
+from django.utils import timezone
 import api.models as models
 import api.serializers as serializers
 import os
@@ -35,18 +37,34 @@ logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
 
 def info_view(request, *args):
+    board = models.Board.objects.filter(name='tech')[0]
     article = models.Article.objects.get(pk=args[0])
+    comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
     category = models.Category.objects.get(pk=article.category_id)
     user = models.CustomUser.objects.get(pk=article.owner_id)
+
     article.category_name = category.name
     article.username = user.username
+
+    prev_comment = None
+    for comment in comments:
+        user = models.CustomUser.objects.get(pk=comment.owner_id)
+        comment.username = user.username
+        df = DateFormat(comment.created)
+        comment.date = timezone.localtime(comment.created).strftime("%Y.%m.%d %H:%M")
+        if prev_comment:
+            comment.prev_comment_username = prev_comment.username
+        prev_comment = comment
 
     context = RequestContext(
         request,
         {
             'request': request,
             'user': request.user,
-            'article': article
+            'article': article,
+            'comments': comments,
+            'board': board,
+            'category': category,
         })
 
     logger.info(args[0])
@@ -106,18 +124,34 @@ def info(request):
     return render_to_response('info/list.html', context_instance=context)
 
 def tech_view(request, *args):
+    board = models.Board.objects.filter(name='tech')[0]
     article = models.Article.objects.get(pk=args[0])
+    comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
     category = models.Category.objects.get(pk=article.category_id)
     user = models.CustomUser.objects.get(pk=article.owner_id)
+
     article.category_name = category.name
     article.username = user.username
+
+    prev_comment = None
+    for comment in comments:
+        user = models.CustomUser.objects.get(pk=comment.owner_id)
+        comment.username = user.username
+        df = DateFormat(comment.created)
+        comment.date = timezone.localtime(comment.created).strftime("%Y.%m.%d %H:%M")
+        if prev_comment:
+            comment.prev_comment_username = prev_comment.username
+        prev_comment = comment
 
     context = RequestContext(
         request,
         {
             'request': request,
             'user': request.user,
-            'article': article
+            'article': article,
+            'comments': comments,
+            'board': board,
+            'category': category,
         })
 
     logger.info(args[0])
