@@ -1,0 +1,46 @@
+.light.following.bar + main {
+    margin-top: 70px;
+}
+
+main {
+    max-width: 800px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main header {
+    text-align: right;
+    padding: 20px;
+}
+
+main section {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+article #source {
+    display: none;
+}
+
+article .ui.form textarea {
+    line-height: 1.5;
+}
+
+article .preview-title {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ccc;
+    margin-bottom: 15px;
+}
+
+article #save {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width : 649px) {
+    .light.following.bar + main {
+        margin-top: 45px;
+    }
+}

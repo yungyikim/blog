@@ -71,7 +71,10 @@ def info_view(request, *args):
 
     return render_to_response('info/view.html', context_instance=context)
 
-def info_edit(request):
+def info_new(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
     board = models.Board.objects.filter(name='info')[0]
     categorys = models.Category.objects.filter(board_id=board.id)
 
@@ -90,7 +93,7 @@ def info_edit(request):
     logger.info(context)
     logger.info(request.user)
 
-    return render_to_response('info/edit.html', context_instance=context)
+    return render_to_response('info/new.html', context_instance=context)
 
 
 def info(request):
@@ -158,7 +161,10 @@ def tech_view(request, *args):
 
     return render_to_response('tech/view.html', context_instance=context)
 
-def tech_edit(request):
+def tech_new(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
     board = models.Board.objects.filter(name='tech')[0]
     categorys = models.Category.objects.filter(board_id=board.id)
 
@@ -177,7 +183,7 @@ def tech_edit(request):
     logger.info(context)
     logger.info(request.user)
 
-    return render_to_response('tech/edit.html', context_instance=context)
+    return render_to_response('tech/new.html', context_instance=context)
 
 
 def tech(request):
