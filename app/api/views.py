@@ -217,6 +217,9 @@ def tech(request):
     return render_to_response('tech/list.html', context_instance=context)
 
 def profile_edit(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
     profile = models.Profile.objects.last()
     logger.info(profile)
 
