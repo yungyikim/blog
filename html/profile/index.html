@@ -4,61 +4,88 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+        <meta name="description" content="YungyiKim's 개발 블로그, 프로필, 기술 노트, 정보 노트, 보유 스킬 : nginx + django + mysql + elasticsearch + aws + gulp + angularjs + jquery + bootstrap + semantic-ui">
         <meta name="author" content="">
-        <title>Yungyikim 블로그 - 소개</title>
+        <title>YungyiKim's 개발자로서 살아온 이력 정리</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/ui/semantic.css" rel="stylesheet">
         <link href="/css/profile/index.css" rel="stylesheet">
         <link href="/css/common.css" rel="stylesheet">
     </head>
-    <body ng-app="myapp">
-        <header>
-            <div class="inner">
-                <div class="dummy">
-                </div>
-                <h3>
-                    <a href="/">YUNGYIKIM 블로그</a>
-                </h3>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/profile">YungyiKim 소개</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/yungyikim/blog"><i class="fa fa-github-square" aria-hidden="true"></i> 블로그 소스 코드</a>
-                        </li>
-                        <li>
-                            <a href="/tech">기술 노트</a>
-                        </li>
-                        <li>
-                            <a href="/info">정보 노트</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <main ng-controller="MainCtrl">
-            <article>
-                <div class="time-count">
-                    <p>개발자로 살아온지 <b>{{ profile.years }}년 {{ profile.months }}개월</b>이 지났습니다.</p>
-                </div>
-                <div ng-bind-html="renderHtml(html)">
-                </div>
-            </article>
-        </main>
-        <footer>
-            <div class="wrap">
-                <div class="copyright">
-                    <p>
-                        Blog designed by <a href="#">YungyiKim</a>
-                    </p>
+    <body ng-app="myapp" id="blog">
+        <div class="ui left vertical inverted labeled sidebar menu">
+            <a class="header item" href="/">
+                Home
+            </a>
+            <a class="header item" href="https://github.com/yungyikim/blog">
+                블로그 소스 코드
+            </a>
+            <a class="header item" href="/tech">
+                기술 노트
+            </a>
+            <a class="header item" href="/info">
+                정보 노트
+            </a>
+        </div>
+        <div class="ui fixed inverted main menu">
+            <div class="ui container">
+                <a class="launch icon item">
+                    <i class="content icon"></i>
+                </a>
+                <div class="right menu">
+                    <div class="header item">
+                        <a href="/profile">
+                            About Me
+                        </a>
+                    </div>
+                    <div class="header item">
+                        <a href="#">
+                            Contact Me
+                        </a>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+        <div class="pusher">
+            <div class="light following bar">
+                <div class="ui container">
+                    <div class="ui secondary menu">
+                        <a class="header item" href="/">Yungyikim's 블로그</a>
+                        <div class="right menu">
+                            <div class="header item">
+                                <a href="/profile">About Me</a>
+                                <a href="https://github.com/yungyikim/blog">블로그 소스 코드</a>
+                                <a href="/tech">기술 노트</a>
+                                <a href="/info">정보 노트</a>
+                                <a href="#">Contact Me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <main ng-controller="MainCtrl">
+                <article>
+                    <div class="time-count">
+                        <p>개발자로 살아온지 <b>{{ profile.years }}년 {{ profile.months }}개월</b>이 지났습니다.</p>
+                    </div>
+                    <div ng-bind-html="renderHtml(html)">
+                    </div>
+                </article>
+            </main>
+        </div>
+        <div class="ui inverted vertical footer segment">
+          <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+              <div class="wide column">
+                <p class="ui inverted">Blog designed by <b>YungyiKim</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+	    <script src="/assets/js/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
-	    <script src="/assets/js/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
 	    <script src="/assets/js/showdown.js"></script>
 	    <script src="/assets/js/URI.min.js"></script>
 	    <script src="/assets/js/moment-with-locales.min.js"></script>

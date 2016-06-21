@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ article.summary }}">
+    <meta name="author" content="">
+    <title>{{ article.title }}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/info/view.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <header>
+        {% if user and not user.is_anonymous %}
+        <h3 id="user-info" data-id="{{ user.get_id }}">환영합니다. {{ user.get_full_name }} 님</h3>
+        {% endif %}
+    </header>
+    <section>
+        <div id="source">{{ article.content }}</div>
+        <article class="article" data-id="{{ article.id }}" data-board-id="{{ board.id }}" data-category-id="{{ category.id }}">
+            <div class="thumbnail">
+                <img src="{{ article.image_url }}" class="post-thumbnail" alt="">
+            </div>
+            <div class="ui container">
+                <header class="header entry-header">
+                    <h1 id="title">
+                        {{ article.title }}
+                    </h1>
+                </header>
+                <div class="ui basic segment entry-meta">
+                    <ul>
+                        <li>
+                            By {{ article.username }}
+                        </li>
+                        <li>
+                            /
+                        </li>
+                        <li>
+                            {{ article.created }}
+                        </li>
+                        <li>
+                            /
+                        </li>
+                        <li>
+                            {{ article.category_name }}
+                        </li>
+                    </ul>
+                </div>
+                <div id="content" class="ui basic segment entry-content" ng-bind-html="renderHtml(article.html)">
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <div class="comment-form default">
+                            <div class="ui basic segment">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <input name="parent_id" type="hidden" value="{{ article.id }}">
+                                    </div>
+                                    <div class="field">
+                                        <textarea class="autosize" name="content" rows="1"></textarea>
+                                    </div>
+                                    <div class="field">
+                                        <a class="ui primary submit button" ng-click="post_comment({{ article.id }})">답글 남기기</a>
+                                    </div>
+                                    <div class="ui error message"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <div class="ui basic segment depth-{{ comment.depth }}">
+                            <div class="comment-view">
+                                <div class="ui grid">
+                                    <div class="ui twelve wide column">
+                                        <h4>{{ comment.username }} &nbsp; <i class="date">{{ comment.date }}</i></h4>
+                                    </div>
+                                    <div class="ui right floated right aligned four wide column">
+                                        <a ng-click="show_comment_form({{ comment.id }})">답글</a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    {% if comment.depth > 2 %}
+                                    <h4 class="prev-comment-username">{{ comment.prev_comment_username }}</h4>
+                                    {% endif %}
+                                    <div class="ui form">
+                                        <div class="field">
+                                            <textarea class="autosize" readonly="" rows="1">{{ comment.content }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-form depth-2" data-id="{{ comment.id }}">
+                                <div class="ui form">
+                                    {% if comment.depth != 1 %}
+                                    <div class="field">
+                                        <h4>@ {{ comment.username }}</h4>
+                                    </div>
+                                    {% endif %}
+                                    <div class="field">
+                                        <input name="parent_id" type="hidden" value="{{ comment.id }}">
+                                    </div>
+                                    <div class="field">
+                                        <textarea class="autosize" name="content" rows="1"></textarea>
+                                    </div>
+                                    <div class="field">
+                                        <a class="ui primary submit button" ng-click="post_comment({{ comment.id }})">답글 남기기</a>
+                                    </div>
+                                    <div class="ui error message"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </article>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/static/assets/js/showdown.js"></script>
+<script src="/static/assets/js/URI.min.js"></script>
+<script src="{% static 'js/info/view.js' %}"></script>
+{% endblock %}

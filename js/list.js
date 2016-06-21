@@ -12,6 +12,10 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $
     console.log(uri);
     console.log($scope.board_name);
 
+    $(".ui.sidebar")
+        .sidebar('setting', 'transition', 'overlay')
+        .sidebar('attach events','.launch');
+
     $http.get('/api/boards')
         .then(
             function(response) {

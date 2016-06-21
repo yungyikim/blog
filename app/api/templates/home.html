@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YungyiKim's 개발 블로그, 프로필, 기술 노트, 정보 노트, 보유 스킬 : nginx + django + mysql + elasticsearch + aws + gulp + angularjs + jquery + bootstrap + semantic-ui">
+    <meta name="author" content="">
+    <title>Yungyikim's 블로그</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/assets/css/slick.css" rel="stylesheet">
+    <link href="/static/assets/css/slick-theme.css" rel="stylesheet">
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <div class="masthead segment bg zoomed">
+        <div class="ui container">
+            <div class="introduction">
+                <h1 class="ui header">
+                    <span class="title">
+                        Yungyikim's Blog
+                    </span>
+                </h1>
+                <div class="description malgun-gothic">
+                    <h3>About Me</h3>
+                    <p>YungyiKim의 개발 이력 + 보유 스킬 소개</p>
+                    <h3>기술 노트</h3>
+                    <p>기술적인 내용을 정리하는 공간</p>
+                    <h3>정보 노트</h3>
+                    <p>정보성 자료를 정리하는 공간</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="social-login">
+        <div class="ui middle aligned one column centered grid">
+            <div class="row">
+                <div class="column aligned centered">
+                    <h3 class="header">소셜 로그인을 테스트 해보세요</h3>
+                    {% if user and not user.is_anonymous %}
+                    <h4 class="header">환영합니다. "{{ user.get_full_name }}" 님!</h4>
+                    <a href="{% url 'auth:logout' %}?next={{ request.path }}" class="small ui primary button">로그아웃</a>
+                    {% else %}
+                    <div class="login-wrap">
+                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="ui primary button facebook"><i class="fa fa-facebook" aria-hidden="true"></i> &nbsp; 페이스북 아이디로 로그인</a>
+                        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="ui primary button twitter"><i class="fa fa-twitter" aria-hidden="true"></i> &nbsp; 트위터 아이디로 로그인</a>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="ui primary button google"><i class="fa fa-google-plus" aria-hidden="true"></i> &nbsp; 구글 아이디로 로그인</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured">
+        <div class="container">
+            <div>
+                <img class="grayimg nginx" src="/static/img/nginx.svg">
+            </div>
+            <div>
+                <img class="grayimg django" src="/static/img/django-community.svg">
+            </div>
+            <div>
+                <img class="grayimg mysql" src="/static/img/mysql-5.svg">
+            </div>
+            <div>
+                <img class="grayimg elasticsearch" src="/static/img/elasticsearch.svg">
+            </div>
+            <div>
+                <img class="grayimg aws" src="/static/img/amazon-web-services.svg">
+            </div>
+            <div>
+                <img class="grayimg gulp" src="/static/img/gulp-1.svg">
+            </div>
+            <div>
+                <img class="grayimg angular" src="/static/img/angular-icon.svg">
+            </div>
+            <div>
+                <img class="grayimg jquery" src="/static/img/jquery-1.svg">
+            </div>
+            <div>
+                <img class="grayimg bootstrap" src="/static/img/bootstrap-4.svg">
+            </div>
+            <div>
+                <img class="grayimg semantic-ui" src="/static/img/semantic-ui.svg">
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/static/assets/js/url.js"></script>
+<script src="/static/assets/js/slick.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

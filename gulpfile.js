@@ -10,7 +10,7 @@ var livereload = require('gulp-livereload');
 var gutil = require('gulp-util');
 
 var src = '';
-var dist = 'dist';
+var dist = 'dist/static';
 
 var paths = {
     assets: src + 'assets/**/*',
@@ -18,9 +18,9 @@ var paths = {
 	ui: src + 'ui/**/*',
 	jasmine: src + 'jasmine-2.4.1/**/*',
 	spec: src + 'spec/**/*',
-    html: src + 'html/**/*',
-    js: src + 'js/**/*',
-    css: src + 'css/**/*',
+    //html: src + 'html/**/*',
+    //js: src + 'js/**/*',
+    //css: src + 'css/**/*',
     img: src + 'img/**/*',
     fonts: src + 'font/*.*',
 };
@@ -50,7 +50,7 @@ gulp.task('copy', function() {
 
 	var spec = gulp.src(paths.spec)
 		.pipe(gulp.dest(dist+'/spec'));
-
+/*
 	var html = gulp.src(paths.html)
 		.pipe(gulp.dest(dist));
 
@@ -60,14 +60,15 @@ gulp.task('copy', function() {
 
 	var css = gulp.src(paths.css)
 		.pipe(gulp.dest(dist+'/css'));
-
+*/
 	var img = gulp.src(paths.img)
 		.pipe(gulp.dest(dist+'/img'));
 
 	var fonts = gulp.src(paths.fonts)
 		.pipe(gulp.dest(dist+'/fonts'));
 
-	return merge(assets, bootstrap, ui, jasmine, spec, html, js, css, img, fonts);
+	//return merge(assets, bootstrap, ui, jasmine, spec, html, js, css, img, fonts);
+	return merge(assets, bootstrap, ui, jasmine, spec, img, fonts);
 });
 
 gulp.task('watch', function(){

@@ -1,0 +1,148 @@
+.light.following.bar + main {
+    margin-top: 70px;
+}
+
+main {
+    max-width: 800px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main header {
+    text-align: right;
+}
+
+main header h3 {
+    margin: 10px !important;
+}
+
+main section {
+}
+
+main section #source {
+    display: none;
+}
+
+article {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+
+article .thumbnail img {
+    width: 100%;
+}
+
+article .entry-header {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+article .entry-meta {
+    color: #9e9e9e;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+article .entry-meta ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+article .entry-meta li {
+    display: inline-block;
+}
+
+article .entry-meta li + li {
+    margin-left: 5px;
+}
+
+article .comments {
+    padding-top: 0;
+}
+
+article .comments textarea {
+    line-height: 1.7 !important;
+    resize: none !important;
+}
+
+article .comments .comment + .comment {
+}
+
+article .comments .comment .comment-view .ui.segment
+, article .comments .comment .comment-view .ui.menu
+, article .comments .comment .comment-view .ui.menu .item {
+    margin: 0;
+}
+
+article .comments .comment .depth-2.ui.segment
+, article .comments .comment .depth-3.ui.segment
+, article .comments .comment .depth-4.ui.segment
+, article .comments .comment .depth-5.ui.segment
+, article .comments .comment .depth-6.ui.segment
+, article .comments .comment .depth-7.ui.segment {
+    margin-left: 50px;
+}
+
+article .comments .comment .comment-view h4.prev-comment-username {
+    width: 80px;
+    position: absolute;
+    margin-top: 0;
+    color: #1678C2;
+}
+
+article .comments .comment .comment-view .prev-comment-username + .ui.form {
+    margin-left: 80px;
+}
+
+article .comments .comment .comment-view h4 .date {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+article .comments .comment .comment-view a {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+article .comments .comment .comment-view textarea {
+    border: 0;
+    padding: 0 !important;
+}
+
+article .comments .comment .comment-view .content {
+    padding: 10px 0;
+}
+
+article .comments .comment .comment-form {
+}
+
+article .comments .comment .comment-form.default {
+    display: block;
+}
+
+@media only screen and (max-width : 499px) {
+    article .comments .comment .depth-2.ui.segment
+    , article .comments .comment .depth-3.ui.segment
+    , article .comments .comment .depth-4.ui.segment
+    , article .comments .comment .depth-5.ui.segment
+    , article .comments .comment .depth-6.ui.segment
+    , article .comments .comment .depth-7.ui.segment {
+        margin-left: 40px;
+    }
+}
+
+@media only screen and (max-width : 649px) {
+    .light.following.bar + main {
+        margin-top: 45px;
+    }
+}

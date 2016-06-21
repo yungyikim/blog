@@ -22,6 +22,10 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $
     $scope.profile.years = duration.years();
     $scope.profile.months = duration.months();
 
+    $(".ui.sidebar")
+        .sidebar('setting', 'transition', 'overlay')
+        .sidebar('attach events','.launch');
+
     $http.get(
         '/api/profiles'
     )

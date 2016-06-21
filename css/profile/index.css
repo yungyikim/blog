@@ -1,78 +1,57 @@
-
-body {
-    background-color: #f1f1f1;
+#blog .ui.sidebar.menu,
+#blog .ui.fixed.menu {
+    background-color: steelblue;
 }
 
-body > header {
-    background-color: #fff;
-    box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+#blog .following.bar {
+  position: fixed;
+  top: 0px;
+  z-index: 900;
+  left: 0%;
+  padding: 2em 0em;
+  width: 100%;
+  box-shadow: 0px 0px 0px 0px transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    padding 0.5s ease,
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease
+  ;
 }
 
-body > header .inner {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
+#blog .light.following.bar {
+  padding: 1em 0em;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
 }
 
-body > header .dummy {
-    display: inline-block;
-    vertical-align: middle;
-    height: 70px;
-}
-
-body > header h3 {
-    display: inline-block;
-    vertical-align: middle;
-    width: 150px;
-    margin: 0;
-}
-
-body > header nav {
-    display: inline-block;
-    vertical-align: middle;
-    width: calc(100% - 160px);
-    text-align: right;
-}
-
-body > header nav ul {
-    list-style-type: none;
-    list-style-image: none;
-    padding: 0;
-    margin: 0;
-}
-
-body > header nav li {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-body > header nav li + li {
+#blog .following.bar .menu a + a {
     margin-left: 15px;
 }
 
-body > main {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
+#blog main {
+    margin-top: 70px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-body > main article {
-    padding: 50px;
+#blog article {
+    max-width: 800px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #fff;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 700px) {
-    body > main article {
-        padding: 10px;
-    }
+#blog article .time-count {
+    padding-bottom: 20px;
+}
 
-    body > main article .time-count {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+#blog article .time-count p {
+    font-size: 1.2rem;
 }
 
 body > main article .time-count {
@@ -83,35 +62,38 @@ body > main article .time-count p {
     font-size: 1.2rem;
 }
 
-body > footer {
-    background-color: #222222;
-    width: 100%;
-    display: table;
-    height: 80px;
+.ui.footer.segment {
+  padding: 4em 0em;
+  background-color: steelblue;
 }
 
-body > footer .wrap {
-    display: table-cell;
-    vertical-align: middle;
+
+@media only screen and (max-width : 1040px) {
+  #blog .following.bar .menu > .item {
+    margin-right: 0.5em;
+  }
 }
 
-body > footer .copyright {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #6f6f6f;
+@media only screen and (max-width : 810px) {
+  #blog .following.bar .menu > .item {
+    margin-right: 0.75em;
+  }
 }
 
-body > footer .copyright p {
-    font-family: "Open Sans", Arial, sans-serif;
-    font-size: 0.9em;
+@media only screen and (min-width : 650px) {
+    #blog .main.menu {
+        display: none;
+    }
 }
 
-body > footer .copyright p a {
-    color: #999;
-    font-weight: bold;
-}
+@media only screen and (max-width : 649px) {
+    #blog .following.bar {
+        display: none;
+    }
 
-@media (min-width: 840px) {
-
+    #blog main {
+        margin-top: 44px;
+        padding-top: 44px;
+        padding-bottom: 44px;
+    }
 }

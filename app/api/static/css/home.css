@@ -1,0 +1,262 @@
+
+#blog .masthead.segment.zoomed h1 {
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 1);
+}
+#blog .masthead.zoomed:after {
+  opacity: 0;
+}
+#blog .masthead.zoomed {
+  background-color: #25282A;
+}
+
+
+#blog .masthead {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 0em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0px;
+  border-bottom: none;
+
+  background-color: #000000;
+  background-position: 50% 50%;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+#blog .masthead:after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-size: cover;
+
+  opacity: 0.45;
+}
+#blog .masthead.bg:after {
+    background-image: url("/static/img/bg.jpg");
+}
+#blog .masthead,
+#blog .masthead:after {
+  -ms-transition:
+    background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+    opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s
+  ;
+  -moz-transition:
+    background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+    opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s
+  ;
+  -webkit-transition:
+    background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+    opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s
+  ;
+  transition:
+    background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+    opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s
+  ;
+}
+#blog .masthead .container {
+  height: 55vh;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-height: 600px;
+
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+#blog .masthead .container {
+  padding: 15rem 0em;
+}
+
+#blog .masthead.segment h1 {
+  font-size: 3em;
+  color: rgba(255, 255, 255, 1);
+  line-height: 1;
+  margin: 0px 0px 0px;
+  padding-bottom: 0px;
+  -moz-perspective: 500px;
+  -webkit-perspective: 500px;
+  perspective: 500px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#blog .masthead.segment h1 .description {
+  font-size: 0.4em;
+  font-weight: 200;
+}
+#blog .masthead.segment .description {
+    text-align: left;
+
+}
+#blog .masthead.segment h1 > .title {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#blog .masthead .ui.header {
+    padding: 40px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #000;
+}
+
+main section.social-login {
+    margin-top: 14px;
+    min-height: 400px;
+    background-image: url("/static/img/social-login-1280.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+main section.social-login > .ui.middle.grid {
+    height: 400px;
+}
+
+main section.social-login .header {
+    color: #fff;
+    margin: 10px;
+}
+
+main section.social-login .header .ui.basic.button {
+    padding: 10px;
+}
+
+main section.social-login .login-wrap {
+    width: 302px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(221,221,221,0.5);
+}
+
+main section.social-login .login-wrap .button {
+    width: 260px;
+    padding: 15px;
+}
+
+main section.social-login .login-wrap .button + .button {
+    margin-top: 10px;
+}
+
+main section.social-login .login-wrap .button.facebook {
+    background-color: #6D84B4;
+}
+
+main section.social-login .login-wrap .button.twitter {
+    background-color: #1DADEA;
+}
+
+main section.social-login .login-wrap .button.google {
+    background-color: #C93928;
+}
+
+main section.featured {
+    min-height: 200px;
+    padding-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main section.featured .container {
+}
+
+main section.featured ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+main section.featured li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+main section.featured li + li {
+    margin-left: 100px;
+}
+
+main section.featured .grayimg {
+    filter: url(filters.svg#grayscale); /* Firefox */
+    filter: gray; /* IE */
+    -webkit-filter: grayscale(1); /* Webkit */
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+main section.featured .grayimg:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+main section.featured .grayimg.nginx{
+    width: 160px;
+    margin-top: 60px;
+}
+
+main section.featured .grayimg.django{
+    width: 140px;
+    margin-top: 55px;
+}
+
+main section.featured .grayimg.mysql {
+    height: 160px;
+}
+
+main section.featured .grayimg.elasticsearch {
+    height: 80px;
+    margin-top: 35px;
+}
+
+main section.featured .grayimg.aws {
+    margin-top: 55px;
+}
+
+main section.featured .grayimg.gulp {
+    height: 80px;
+    margin-top: 35px;
+}
+
+main section.featured .grayimg.angular{
+    height: 80px;
+    margin-top: 35px;
+}
+
+main section.featured .grayimg.jquery{
+    width: 180px;
+    margin-top: 55px;
+}
+
+main section.featured .grayimg.bootstrap {
+    height: 80px;
+    margin-top: 35px;
+}
+
+main section.featured .grayimg.semantic-ui {
+    height: 80px;
+    margin-top: 35px;
+}

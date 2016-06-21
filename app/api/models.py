@@ -59,71 +59,68 @@ class Article(models.Model):
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, department, password):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
-        if not email:
-            raise ValueError('Users must have an email address')
-
-        try:
-            validate_email(email)
-        except forms.ValidationError as e:
-            raise e
-
-        if not password:
-            raise ValueError('Users must have an password')
-
+    def create_user(self, username, auth_type, email, password):
         user = self.model(
+            username=username,
+            auth_type=auth_type,
             email=self.normalize_email(email),
-			department=department,
         )
 
-        user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, department, password):
+    def create_superuser(self, username, auth_type, email, password):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
         user = self.create_user(
+            username,
+            auth_type,
             email,
             password=password,
-            department=department
         )
         user.is_admin = True
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
 
 class CustomUser(AbstractBaseUser):
+    AUTH_TYPES = (
+        ('C', 'Custom'),
+        ('S', 'Social'),
+    )
+
+    username = models.CharField(
+        null=False,
+        max_length=64,
+        unique=True
+    )
+    auth_type = models.CharField(max_length=1, choices=AUTH_TYPES)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
-        unique=True,
     )
-    department = models.IntegerField(default=0)
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['department']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['auth_type', 'email']
 
     def get_id(self):
         return self.id
 
     def get_full_name(self):
         # The user is identified by their email address
-        return self.email
+        return self.username
 
     def get_short_name(self):
         # The user is identified by their email address
-        return self.email
+        return self.username
 
     def __str__(self):              # __unicode__ on Python 2
         return "%d - %s" % (self.id, self.email,)

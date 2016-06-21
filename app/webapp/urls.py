@@ -21,17 +21,30 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
+#router.register(r'users', views.UserViewSet)
 router.register(r'articles', views.ArticleViewSet)
 router.register(r'categorys', views.CategoryViewSet)
 router.register(r'boards', views.BoardViewSet)
 router.register(r'profiles', views.ProfileViewSet)
 
 urlpatterns = [
-    url(r'^api/grappelli/', include('grappelli.urls')),
-    url(r'^api/admin/', admin.site.urls),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^admin/', admin.site.urls),
 	url(r'^api/', include(router.urls)),
-	url(r'^api/docs/', include('rest_framework_swagger.urls')),
-	url(r'^api/auth/signin/', views.signin),
-	url(r'^api/auth/signout/', views.signout),
+	url(r'^docs/', include('rest_framework_swagger.urls')),
+	#url(r'^auth/signin/', views.signin),
+	#url(r'^auth/signout/', views.signout),
+    url(r'^thirdauth', views.thirdauth, name='thirdauth'),
+    url(r'^$', views.home, name='home'),
+    url(r'^home', views.home, name='home'),
+    url(r'^profile/edit', views.profile_edit, name='profile_edit'),
+    url(r'^profile', views.profile, name='profile'),
+    url(r'^tech/new', views.tech_new, name='tech_new'),
+    url(r'^tech/(\d+)/?$', views.tech_view, name='tech_view'),
+    url(r'^tech', views.tech, name='tech'),
+    url(r'^info/new', views.info_new, name='info_new'),
+    url(r'^info/(\d+)/?$', views.info_view, name='info_view'),
+    url(r'^info', views.info, name='info'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 ]

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block head %}{% endblock %}
+    <body id="blog" ng-app="myapp"  ng-controller="MainCtrl">
+        <div class="ui left vertical inverted labeled sidebar menu">
+            <a class="header item" href="/home">
+                Home
+            </a>
+            <a class="header item" href="https://github.com/yungyikim/blog">
+                블로그 소스 코드
+            </a>
+            <a class="header item" href="/tech">
+                기술 노트
+            </a>
+            <a class="header item" href="/info">
+                정보 노트
+            </a>
+        </div>
+        <div class="ui fixed inverted main menu">
+            <div class="ui container">
+                <a class="launch icon item">
+                    <i class="content icon"></i>
+                </a>
+                <div class="right menu">
+                    <div class="header item">
+                        <a href="/profile">
+                            About Me
+                        </a>
+                    </div>
+                    <div class="header item">
+                        <a href="#">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pusher">
+            <div class="following bar">
+                <div class="ui container">
+                    <div class="ui secondary menu inverted">
+                        <a class="header item" href="/home">Yungyikim's 블로그</a>
+                        <div class="right menu inverted">
+                            <div class="header item">
+                                <a href="/profile">About Me</a>
+                                <a href="https://github.com/yungyikim/blog">블로그 소스 코드</a>
+                                <a href="/tech">기술 노트</a>
+                                <a href="/info">정보 노트</a>
+                                <a href="#">Contact Me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block main %}{% endblock %}
+        </div>
+        <div class="ui inverted vertical footer segment">
+          <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+              <div class="wide column">
+                <p class="ui inverted">Blog designed by <b>YungyiKim</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="/static/assets/js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-cookies.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+        {% block scripts %}{% endblock %}
+	</body>
+</html>

@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404
+from django.template.context import RequestContext
 from django.conf import settings
 from rest_framework import viewsets
 from rest_framework import status
@@ -20,15 +20,256 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.validators import validate_email
 from django.core import mail
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 from django import forms
 from datetime import datetime
+from django.utils.dateformat import DateFormat
+from django.utils import timezone
 import api.models as models
 import api.serializers as serializers
+import os
 import json
 import logging
+import shutil
 
 User = get_user_model()
 logger = logging.getLogger('command')
+host = 'http://www.yungyikim.com'
+
+def info_view(request, *args):
+    board = models.Board.objects.filter(name='tech')[0]
+    article = models.Article.objects.get(pk=args[0])
+    comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
+    category = models.Category.objects.get(pk=article.category_id)
+    user = models.CustomUser.objects.get(pk=article.owner_id)
+
+    article.category_name = category.name
+    article.username = user.username
+
+    prev_comment = None
+    for comment in comments:
+        user = models.CustomUser.objects.get(pk=comment.owner_id)
+        comment.username = user.username
+        df = DateFormat(comment.created)
+        comment.date = timezone.localtime(comment.created).strftime("%Y.%m.%d %H:%M")
+        if prev_comment:
+            comment.prev_comment_username = prev_comment.username
+        prev_comment = comment
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'article': article,
+            'comments': comments,
+            'board': board,
+            'category': category,
+        })
+
+    logger.info(args[0])
+
+    return render_to_response('info/view.html', context_instance=context)
+
+def info_new(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
+    board = models.Board.objects.filter(name='info')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+
+    logger.info(board)
+    logger.info(categorys)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'categorys': categorys
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('info/new.html', context_instance=context)
+
+
+def info(request):
+    page_size = 5
+
+    board = models.Board.objects.filter(name='info')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+    queryset = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
+    p = Paginator(queryset, page_size)
+    articles = p.page(1).object_list
+
+    for article in articles:
+        category = models.Category.objects.get(pk=article.category_id)
+        user = models.CustomUser.objects.get(pk=article.owner_id)
+        article.category_name = category.name
+        article.username = user.username
+        logger.info(article)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'articles': articles,
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('info/list.html', context_instance=context)
+
+def tech_view(request, *args):
+    board = models.Board.objects.filter(name='tech')[0]
+    article = models.Article.objects.get(pk=args[0])
+    comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
+    category = models.Category.objects.get(pk=article.category_id)
+    user = models.CustomUser.objects.get(pk=article.owner_id)
+
+    article.category_name = category.name
+    article.username = user.username
+
+    prev_comment = None
+    for comment in comments:
+        user = models.CustomUser.objects.get(pk=comment.owner_id)
+        comment.username = user.username
+        df = DateFormat(comment.created)
+        comment.date = timezone.localtime(comment.created).strftime("%Y.%m.%d %H:%M")
+        if prev_comment:
+            comment.prev_comment_username = prev_comment.username
+        prev_comment = comment
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'article': article,
+            'comments': comments,
+            'board': board,
+            'category': category,
+        })
+
+    logger.info(args[0])
+
+    return render_to_response('tech/view.html', context_instance=context)
+
+def tech_new(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
+    board = models.Board.objects.filter(name='tech')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+
+    logger.info(board)
+    logger.info(categorys)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'categorys': categorys
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('tech/new.html', context_instance=context)
+
+
+def tech(request):
+    page_size = 5
+
+    board = models.Board.objects.filter(name='tech')[0]
+    categorys = models.Category.objects.filter(board_id=board.id)
+    queryset = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
+    p = Paginator(queryset, page_size)
+    articles = p.page(1).object_list
+
+    for article in articles:
+        category = models.Category.objects.get(pk=article.category_id)
+        user = models.CustomUser.objects.get(pk=article.owner_id)
+        article.category_name = category.name
+        article.username = user.username
+        logger.info(article)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'board': board,
+            'articles': articles,
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('tech/list.html', context_instance=context)
+
+def profile_edit(request):
+    if request.user.is_authenticated() == False or request.user.is_staff == False:
+        return redirect('/')
+
+    profile = models.Profile.objects.last()
+    logger.info(profile)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'profile': profile
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('profile/edit.html', context_instance=context)
+
+def profile(request):
+    profile = models.Profile.objects.last()
+    logger.info(profile)
+
+    queryset = models.Profile.objects.all().order_by('-id')
+    logger.info(queryset)
+
+    context = RequestContext(
+        request,
+        {
+            'request': request,
+            'user': request.user,
+            'profile': profile
+        })
+
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('profile/view.html', context_instance=context)
+
+def home(request):
+    context = RequestContext(request, {'request': request, 'user': request.user})
+    logger.info(context)
+    logger.info(request.user)
+
+    return render_to_response('home.html', context_instance=context)
+
+def thirdauth(request):
+   context = RequestContext(request, {'request': request, 'user': request.user})
+   logger.info(context)
+   logger.info(request.user)
+
+   return render_to_response('thirdauth/main.html',
+                             context_instance=context)
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all().order_by('-id')
@@ -69,6 +310,45 @@ class ArticleViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly,)
 
+    def createStaticFile(self, id, request):
+        logger.info('createStaticFile')
+        project_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../..'))
+        dist_dir = project_dir + '/dist/'
+
+        logger.info(request)
+
+        # SEO
+        f = open(dist_dir+'/view.html', 'r')
+        data = f.read()
+        f.close()
+
+        data = data.decode("utf-8")
+        data = data.replace('$title$', request.data['title'])
+        data = data.replace('$description$', request.data['summary'])
+        data = data.replace('$content$', request.data['content'])
+        data = data.encode("utf-8")
+
+        logger.info(data)
+
+        obj = models.Board.objects.get(pk=request.data['board'])
+        target_link = '/'+obj.name+'/'+str(id)
+
+        logger.info(obj.name)
+
+        f = open(dist_dir+target_link+'.html', 'w')
+        f.write(data)
+        f.close()
+
+        # sitemap에 링크 추가
+        sitemap_file = '/sitemap.txt'
+
+        if os.path.isfile(dist_dir+sitemap_file) == False:
+            shutil.copy(dist_dir+sitemap_file+'.bak', dist_dir+sitemap_file)
+
+        f = open(dist_dir+sitemap_file, 'a')
+        f.write(host+target_link+'\n')
+        f.close()
+
     def create(self, request, *args, **kwargs):
         id = 1
         obj = models.Article.objects.last()
@@ -80,6 +360,11 @@ class ArticleViewSet(viewsets.ModelViewSet):
         request.data['sequence'] = 1
         request.data['depth'] = 0
         request.data['owner'] = request.user.get_id()
+
+        logger.info(request.data['board'])
+
+        # 정적파일 생성
+        self.createStaticFile(id, request)
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -168,7 +453,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
             queryset = models.Article.objects.filter(group=obj.group).filter(content_type='C').order_by('sequence')
             serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
-
+"""
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.order_by(User.USERNAME_FIELD)
     serializer_class = serializers.UserSerializer
@@ -178,6 +463,7 @@ class UserViewSet(viewsets.ModelViewSet):
     # signup
     @csrf_exempt
     def create(self, request, *args, **kwargs):
+        print('create')
         logger.info('create')
         data = {
             'msg': 'success',
@@ -212,21 +498,26 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
 
-        """
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-        """
 
     # 회원정보 목록이 아니라
     # 로그인된 본인 정보만을 반환한다
     def list(self, request, *args, **kwargs):
+        if request.user.is_authenticated() is False:
+            return HttpResponse(status=status.HTTP_403_FORBIDDEN)
+
         obj = User.objects.get(pk=request.user.get_id())
         serializer = self.get_serializer(obj)
         return Response(serializer.data)
+"""
 
+
+"""
+def signout(request):
+    logout(request)
+    return redirect('/')
+"""
+
+"""
 @csrf_exempt
 def signout(request):
     data = {
@@ -243,7 +534,9 @@ def signout(request):
         data['msg'] = 'post only'
 
     return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
+"""
 
+"""
 @csrf_exempt
 def signin(request):
     data = {
@@ -279,3 +572,4 @@ def signin(request):
         data['msg'] = 'post only'
 
     return HttpResponse(json.dumps(data), status=data['status'], content_type='application/json')
+"""
