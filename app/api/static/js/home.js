@@ -7,6 +7,14 @@ app.config(function($httpProvider, $interpolateProvider) {
 });
 app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
     console.log('controller');
+
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        $('#clipboard-pointing-label').css('display', 'inline-block');
+    });
 }]);
 
 $(document).ready(function() {

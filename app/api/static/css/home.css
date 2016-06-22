@@ -173,6 +173,29 @@ main section.social-login .login-wrap .button.google {
     background-color: #C93928;
 }
 
+main section.clipboard-test {
+    height: 190px;
+    padding: 30px 0;
+    margin-top: 14px;
+    background-color: aliceblue;
+}
+
+main section.clipboard-test .column {
+    max-width: 400px;
+}
+
+main section.clipboard-test .column textarea {
+    width: 340px;
+    margin: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+main section.clipboard-test .column .pointing.label {
+    display: none;
+}
+
+
 main section.featured {
     min-height: 200px;
     padding-top: 20px;

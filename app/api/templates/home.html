@@ -60,6 +60,21 @@
             </div>
         </div>
     </section>
+    <section class="clipboard-test">
+        <div class="ui container">
+            <div class="ui center aligned grid">
+                <div class="column">
+                    <div class="ui form">
+                        <label><a href="https://clipboardjs.com/">clipboard.js</a>를 활용하여 코드를 클립보드로 복사하는 예제</label>
+                        <textarea id="copied-content" rows="2" class="btn" data-clipboard-target="#copied-content">http://www.yungyikim.com/home</textarea>
+                        <div id="clipboard-pointing-label" class="ui pointing label">
+                            Copied to Clipboard
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="featured">
         <div class="container">
             <div>
@@ -101,5 +116,6 @@
 {% block scripts %}
 <script src="/static/assets/js/url.js"></script>
 <script src="/static/assets/js/slick.min.js"></script>
+<script src="/static/assets/js/clipboard.min.js"></script>
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
