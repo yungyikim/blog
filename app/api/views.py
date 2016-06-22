@@ -31,6 +31,7 @@ import os
 import json
 import logging
 import shutil
+import markdown2
 
 User = get_user_model()
 logger = logging.getLogger('command')
@@ -45,6 +46,7 @@ def info_view(request, *args):
 
     article.category_name = category.name
     article.username = user.username
+    request.url = 'http://' + request.get_host() + request.get_full_path()
 
     prev_comment = None
     for comment in comments:
@@ -135,6 +137,7 @@ def tech_view(request, *args):
 
     article.category_name = category.name
     article.username = user.username
+    request.url = 'http://' + request.get_host() + request.get_full_path()
 
     prev_comment = None
     for comment in comments:
@@ -313,10 +316,12 @@ class ArticleViewSet(viewsets.ModelViewSet):
     def createStaticFile(self, id, request):
         logger.info('createStaticFile')
         project_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../..'))
-        dist_dir = project_dir + '/dist/'
+        dist_dir = project_dir + '/dist/static/'
 
-        logger.info(request)
+        obj = models.Board.objects.get(pk=request.data['board'])
+        target_link = '/'+obj.name+'/'+str(id)
 
+        """
         # SEO
         f = open(dist_dir+'/view.html', 'r')
         data = f.read()
@@ -330,20 +335,19 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
         logger.info(data)
 
-        obj = models.Board.objects.get(pk=request.data['board'])
-        target_link = '/'+obj.name+'/'+str(id)
 
         logger.info(obj.name)
 
         f = open(dist_dir+target_link+'.html', 'w')
         f.write(data)
         f.close()
+        """
 
         # sitemap에 링크 추가
-        sitemap_file = '/sitemap.txt'
+        sitemap_file = 'sitemap.txt'
 
         if os.path.isfile(dist_dir+sitemap_file) == False:
-            shutil.copy(dist_dir+sitemap_file+'.bak', dist_dir+sitemap_file)
+            shutil.copy(dist_dir+'../'+sitemap_file+'.org', dist_dir+sitemap_file)
 
         f = open(dist_dir+sitemap_file, 'a')
         f.write(host+target_link+'\n')

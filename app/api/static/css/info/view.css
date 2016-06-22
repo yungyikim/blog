@@ -65,6 +65,10 @@ article .entry-meta li + li {
     margin-left: 5px;
 }
 
+article .addthis_sharing_toolbox {
+    padding: 1em;
+}
+
 article .comments {
     padding-top: 0;
 }
