@@ -5,21 +5,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="all">
+    <meta name="author" content="www.yungyikim.com">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ article.summary }}">
-    <meta name="author" content="">
-    <meta name="twitter:card" content="{{ article.summary }}" />
-    <meta name="twitter:url" content="{{ request.url }}" />
-    <meta name="twitter:title" content="{{ article.title }}" />
-    <meta name="twitter:description" content="{{ article.summary }}" />
-    <meta name="twitter:image" content="{{ article.image_url }}" />
-    <meta name="twitter:site" content="@YungYiKim" />
-    <meta name="twitter:creator" content="@YungYiKim" />
+    <meta property="twitter:card" content="{{ article.summary }}" />
+    <meta property="twitter:url" content="{{ request.url }}" />
+    <meta property="twitter:title" content="{{ article.title }}" />
+    <meta property="twitter:description" content="{{ article.summary }}" />
+    <meta property="twitter:image:src" content="{{ article.image_url }}" />
+    <meta property="twitter:site" content="@YungYiKim" />
+    <meta property="twitter:creator" content="@YungYiKim" />
+    <meta property="twitter:domain" content="yungyikim.com" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ article.title }}" />
     <meta property="og:url" content="{{ request.url }}" />
     <meta property="og:description" content="{{ article.summary }}" />
     <meta property="og:image" content="{{ article.image_url }}" />
+    <meta property="url" content="{{ request.url }}" />
+    <meta property="title" content="{{ article.title }}" />
+    <meta property="description" content="{{ article.summary }}" />
     <title>{{ article.title }}</title>
     <link rel="image_src" href="{{ article.image_url }}"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
