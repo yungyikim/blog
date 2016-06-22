@@ -8,14 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ article.summary }}">
     <meta name="author" content="">
+    <meta name="twitter:card" content="{{ article.summary }}" />
+    <meta name="twitter:url" content="{{ request.url }}" />
+    <meta name="twitter:title" content="{{ article.title }}" />
+    <meta name="twitter:description" content="{{ article.summary }}" />
+    <meta name="twitter:image" content="{{ article.image_url }}" />
+    <meta name="twitter:site" content="@YungYiKim" />
+    <meta name="twitter:creator" content="@YungYiKim" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ article.title }}" />
     <meta property="og:url" content="{{ request.url }}" />
     <meta property="og:description" content="{{ article.summary }}" />
     <meta property="og:image" content="{{ article.image_url }}" />
-    <meta property="" content="">
-    <meta property="" content="">
     <title>{{ article.title }}</title>
+    <link rel="image_src" href="{{ article.image_url }}"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
