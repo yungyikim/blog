@@ -8,7 +8,18 @@
     <meta name="robots" content="all">
     <meta name="author" content="www.yungyikim.com">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ article.summary }}">
+    <meta name="description" itemprop="description" content="{{ article.summary }}">
+    <meta name="keywords" itemprop="keywords" content="{{ article.summary }}">
+    <link rel="canonical" href="{{ request.url }}">
+    <meta name="naver-site-verification" content="274b32fdc72d1e72f65d431e78e1427f4594b085"/>
+    <meta name="twitter:card" content="{{ article.summary }}" />
+    <meta name="twitter:url" content="{{ request.url }}" />
+    <meta name="twitter:title" content="{{ article.title }}" />
+    <meta name="twitter:description" content="{{ article.summary }}" />
+    <meta name="twitter:image:src" content="{{ article.image_url }}" />
+    <meta name="twitter:site" content="@YungYiKim" />
+    <meta name="twitter:creator" content="@YungYiKim" />
+    <meta name="twitter:domain" content="yungyikim.com" />
     <meta property="twitter:card" content="{{ article.summary }}" />
     <meta property="twitter:url" content="{{ request.url }}" />
     <meta property="twitter:title" content="{{ article.title }}" />
@@ -17,7 +28,8 @@
     <meta property="twitter:site" content="@YungYiKim" />
     <meta property="twitter:creator" content="@YungYiKim" />
     <meta property="twitter:domain" content="yungyikim.com" />
-    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="YungyiKim's 블로그" />
+    <meta property="og:type" content="blog" />
     <meta property="og:title" content="{{ article.title }}" />
     <meta property="og:url" content="{{ request.url }}" />
     <meta property="og:description" content="{{ article.summary }}" />
@@ -77,8 +89,12 @@
                 </div>
                 <div id="content" class="ui basic segment entry-content" ng-bind-html="renderHtml(article.html)">
                 </div>
+                <div class="other-sharing-toolbox">
+                    <a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Naver" ><img src="/static/img/naver.png"></a>
+                </div>
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_sharing_toolbox"></div>
+                <div class="addthis_sharing_toolbox">
+                </div>
                 <div class="comments">
                     <div class="comment">
                         <div class="comment-form default">

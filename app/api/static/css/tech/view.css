@@ -65,8 +65,18 @@ article .entry-meta li + li {
     margin-left: 5px;
 }
 
+article .other-sharing-toolbox {
+    position: absolute;
+    padding: 18px;
+}
+
+article .other-sharing-toolbox img {
+    width: 32px;
+}
+
 article .addthis_sharing_toolbox {
-    padding: 1em;
+    margin-left: 36px;
+    padding: 16px;
 }
 
 article .comments {
