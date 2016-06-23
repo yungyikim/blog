@@ -50,7 +50,7 @@ def info_view(request, *args):
     request.url = 'http://' + request.get_host() + request.get_full_path()
 
     for post in articles:
-        post.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(article.id)
+        post.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(post.id)
 
     prev_comment = None
     for comment in comments:
@@ -146,7 +146,7 @@ def tech_view(request, *args):
     request.url = 'http://' + request.get_host() + request.get_full_path()
 
     for post in articles:
-        post.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(article.id)
+        post.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(post.id)
 
     prev_comment = None
     for comment in comments:
