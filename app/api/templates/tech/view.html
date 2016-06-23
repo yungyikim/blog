@@ -165,9 +165,9 @@
                     <h4 class="ui header">
                         최근글
                     </h4>
-                    {% for article in articles %}
+                    {% for post in articles %}
                     <p>
-                        <a href="{{ article.url }}">{{ article.title }}</a>
+                        <a href="{{ post.url }}">{{ post.title }}</a>
                     </p>
                     {% endfor %}
                 </div>
