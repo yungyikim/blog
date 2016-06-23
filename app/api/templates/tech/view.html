@@ -145,6 +145,16 @@
                     {% endfor %}
 
                 </div>
+                <div class="recent-articles ui basic segment">
+                    <h4 class="ui header">
+                        최근글
+                    </h4>
+                    {% for article in articles %}
+                    <p>
+                        <a href="{{ article.url }}">{{ article.title }}</a>
+                    </p>
+                    {% endfor %}
+                </div>
             </div>
 
         </article>

@@ -134,6 +134,10 @@ article .comments .comment .comment-form.default {
     display: block;
 }
 
+article .recent-articles p {
+    margin-bottom: 0.4em;
+}
+
 @media only screen and (max-width : 499px) {
     article .comments .comment .depth-2.ui.segment
     , article .comments .comment .depth-3.ui.segment

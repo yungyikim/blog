@@ -38,8 +38,9 @@ logger = logging.getLogger('command')
 host = 'http://www.yungyikim.com'
 
 def info_view(request, *args):
-    board = models.Board.objects.filter(name='tech')[0]
+    board = models.Board.objects.filter(name='info')[0]
     article = models.Article.objects.get(pk=args[0])
+    articles = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
     comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
     category = models.Category.objects.get(pk=article.category_id)
     user = models.CustomUser.objects.get(pk=article.owner_id)
@@ -47,6 +48,9 @@ def info_view(request, *args):
     article.category_name = category.name
     article.username = user.username
     request.url = 'http://' + request.get_host() + request.get_full_path()
+
+    for article in articles:
+        article.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(article.id)
 
     prev_comment = None
     for comment in comments:
@@ -64,6 +68,7 @@ def info_view(request, *args):
             'request': request,
             'user': request.user,
             'article': article,
+            'articles': articles,
             'comments': comments,
             'board': board,
             'category': category,
@@ -131,6 +136,7 @@ def info(request):
 def tech_view(request, *args):
     board = models.Board.objects.filter(name='tech')[0]
     article = models.Article.objects.get(pk=args[0])
+    articles = models.Article.objects.filter(board=board.id).filter(content_type='A').order_by('-id')
     comments = models.Article.objects.filter(group=article.group).filter(content_type='C').order_by('sequence')
     category = models.Category.objects.get(pk=article.category_id)
     user = models.CustomUser.objects.get(pk=article.owner_id)
@@ -138,6 +144,9 @@ def tech_view(request, *args):
     article.category_name = category.name
     article.username = user.username
     request.url = 'http://' + request.get_host() + request.get_full_path()
+
+    for article in articles:
+        article.url = 'http://' + request.get_host() +'/'+ board.name +'/'+ str(article.id)
 
     prev_comment = None
     for comment in comments:
@@ -155,6 +164,7 @@ def tech_view(request, *args):
             'request': request,
             'user': request.user,
             'article': article,
+            'articles': articles,
             'comments': comments,
             'board': board,
             'category': category,
