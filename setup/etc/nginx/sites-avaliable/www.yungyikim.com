@@ -9,6 +9,9 @@ server {
 
     # 데이터 업로드 용량 제한
     client_max_body_size 5M;
+    client_body_buffer_size 128K;
+    client_body_temp_path /tmp/;
+    client_body_in_file_only on;
 
 	root    /home/ubuntu/blog/dist;
     index   index.html index.htm;

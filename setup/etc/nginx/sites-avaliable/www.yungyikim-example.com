@@ -9,6 +9,9 @@ server {
 
     # 데이터 업로드 용량 제한
     client_max_body_size 5M;
+    client_body_buffer_size 128K;
+    client_body_temp_path /tmp/;
+    client_body_in_file_only on;
 
     rewrite_log on;
     error_log  /tmp/nginx/localhost.error.log debug;
