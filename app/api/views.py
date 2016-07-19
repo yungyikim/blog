@@ -430,6 +430,16 @@ class ArticleViewSet(viewsets.ModelViewSet):
             queryset = models.Article.objects.filter(group=obj.group).filter(content_type='C').order_by('sequence')
             serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
+
+# 레이 돌잔치 모바일 초대장
+def ray(request):
+    context = RequestContext(request, {
+        'request': request,
+        'user': request.user,
+    })
+
+    return render_to_response('ray.html', context_instance=context)
+
 """
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.order_by(User.USERNAME_FIELD)

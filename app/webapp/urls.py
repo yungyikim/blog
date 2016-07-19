@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^info/new', views.info_new, name='info_new'),
     url(r'^info/(\d+)/?$', views.info_view, name='info_view'),
     url(r'^info', views.info, name='info'),
+    url(r'^ray/?$', views.ray, name='ray'),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
 ]
