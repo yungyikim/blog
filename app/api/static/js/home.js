@@ -35,15 +35,26 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $
     };
 
     $scope.init = function() {
-        $scope.init_map_cluster();
+        var self = this;
+        var key = document.location.hostname.replace(/(^\s*)|(\s*$)|\./g, '');
+        var clientId = {
+            localhost: 'csgvJKLnW5XA63QGVDL6',
+            yungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
+            wwwyungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
+        };
+        var mapUrl = 'https://openapi.map.naver.com/openapi/v3/maps.js?clientId='+clientId[key];
+        console.log(mapUrl);
+        jQuery.getScript(mapUrl, function() {
+            $scope.init_map_cluster();
 
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                $scope.init_map_geo(position);
-            });
-        } else {
-            alert('이 브라우저는 Geolocation을 지원하지 않습니다');
-        }
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    $scope.init_map_geo(position);
+                });
+            } else {
+                alert('이 브라우저는 Geolocation을 지원하지 않습니다');
+            }
+        });
     };
 
     $scope.init();
@@ -90,37 +101,28 @@ MapWrap.prototype = {
     init: function() {
         var self = this;
 
-        var key = document.location.hostname.replace(/(^\s*)|(\s*$)|\./g, '');
-        var clientId = {
-            localhost: 'csgvJKLnW5XA63QGVDL6',
-            yungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
-            wwwyungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
-        };
-        var mapUrl = 'https://openapi.map.naver.com/openapi/v3/maps.js?clientId='+clientId[key];
-        console.log(mapUrl);
-        jQuery.getScript(mapUrl, function() {
-            self.map = new naver.maps.Map('map_cluster', {
-                center: new naver.maps.LatLng(self.marker_positions['서울우면초등학교'][0], self.marker_positions['서울우면초등학교'][1]),
-                zoom: 7
-            });
-
-            naver.maps.Event.addListener(self.map, 'zoom_changed', function() {
-                console.log('zoom_changed');
-                self.update();
-            });
-
-            self.update();
-
-            self.infoWindow = new naver.maps.InfoWindow({
-                content: self.marker_positions[self.markers[0].title][2].join(''),
-                maxWidth: 300,
-                backgroundColor: 'transparent',
-                borderColor: 'transparent',
-                borderWidth: 0,
-                anchorSize: new naver.maps.Size(20, 18)
-            });
-            self.infoWindow.open(self.map, self.markers[0]);
+        self.map = new naver.maps.Map('map_cluster', {
+            center: new naver.maps.LatLng(self.marker_positions['서울우면초등학교'][0], self.marker_positions['서울우면초등학교'][1]),
+            zoom: 7
         });
+
+        naver.maps.Event.addListener(self.map, 'zoom_changed', function() {
+            console.log('zoom_changed');
+            self.update();
+        });
+
+        self.update();
+
+        self.infoWindow = new naver.maps.InfoWindow({
+            content: self.marker_positions[self.markers[0].title][2].join(''),
+            maxWidth: 300,
+            backgroundColor: 'transparent',
+            borderColor: 'transparent',
+            borderWidth: 0,
+            anchorSize: new naver.maps.Size(20, 18)
+        });
+        self.infoWindow.open(self.map, self.markers[0]);
+
     },
     clear: function() {
         console.log(this.intersectMarkers);
