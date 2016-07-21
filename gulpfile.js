@@ -11,6 +11,7 @@ var gutil = require('gulp-util');
 
 var src = '';
 var dist = 'dist/static';
+var app_dist = 'app/api/static';
 
 var paths = {
     assets: src + 'assets/**/*',
@@ -71,6 +72,26 @@ gulp.task('copy', function() {
 	return merge(assets, bootstrap, ui, jasmine, spec, img, fonts);
 });
 
+gulp.task('app_copy', function() {
+	var assets = gulp.src(paths.assets)
+		.pipe(gulp.dest(app_dist+'/assets'));
+
+	var bootstrap = gulp.src(paths.bootstrap)
+		.pipe(gulp.dest(app_dist+'/bootstrap'));
+
+	var ui = gulp.src(paths.ui)
+		.pipe(gulp.dest(app_dist+'/ui'));
+
+	var img = gulp.src(paths.img)
+		.pipe(gulp.dest(app_dist+'/img'));
+
+	var fonts = gulp.src(paths.fonts)
+		.pipe(gulp.dest(app_dist+'/fonts'));
+
+	//return merge(assets, bootstrap, ui, spec, html, js, css, img, fonts);
+	return merge(assets, bootstrap, ui, spec, js, css, img, fonts);
+});
+
 gulp.task('watch', function(){
   livereload.listen();
   gulp.watch(paths.html, ['copy']);
@@ -80,4 +101,4 @@ gulp.task('watch', function(){
   gulp.watch(dist + '/**').on('change', livereload.changed);
 });
 
-gulp.task('default', ['copy', 'watch', 'server']);
+gulp.task('default', ['copy', 'app_copy', 'watch', 'server']);

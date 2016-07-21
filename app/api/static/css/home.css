@@ -173,6 +173,64 @@ main section.social-login .login-wrap .button.google {
     background-color: #C93928;
 }
 
+main section.map-wrap {
+    margin-top: 15px;
+}
+
+#map_geo,
+#map_cluster {
+    border: 1px solid #9E9E9E;
+}
+
+.c-marker {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background-color: #2F96FC;
+    border-radius: 40px;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.c-marker .inner {
+    width: 34px;
+    height: 34px;
+    border-radius: 34px;
+    border: 2px solid #fff;
+    padding-top: 5px;
+}
+
+.c-info-wrap {
+    color: #565656;
+    width: 250px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.c-info-wrap h5 {
+    width: 200px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.c-info-wrap p {
+    width: 200px;
+    font-size: 0.96rem;
+}
+
+.c-info-wrap .list-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    right: -10px;
+    background-size: cover;
+    background-position: center;
+}
+
 main section.clipboard-test {
     height: 190px;
     padding: 30px 0;
