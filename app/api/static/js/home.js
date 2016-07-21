@@ -93,13 +93,8 @@ MapWrap.prototype = {
         var key = document.location.hostname.replace(/(^\s*)|(\s*$)|\./g, '');
         var clientId = {
             localhost: 'csgvJKLnW5XA63QGVDL6',
-            redwisdome: 'sUpSQj3avhzwTrGjoeiN',
-            modeecokr: 'qU_uWBqZtximu5duBQiY',
-            wwwmodeecokr: 'qU_uWBqZtximu5duBQiY',
-            modeekr: '_h_xlU6YlQBodKfuu8GZ',
-            wwwmodeekr: '_h_xlU6YlQBodKfuu8GZ',
-            modeeme: 'siwjOe95ngf69tNjgBnp',
-            wwwmodeeme: 'siwjOe95ngf69tNjgBnp'
+            yungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
+            wwwyungyikimcom: 'vqE2e4NqqbLcq_1kv9Ug',
         };
         var mapUrl = 'https://openapi.map.naver.com/openapi/v3/maps.js?clientId='+clientId[key];
         console.log(mapUrl);
