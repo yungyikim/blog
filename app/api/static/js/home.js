@@ -16,20 +16,6 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $
         $('#clipboard-pointing-label').css('display', 'inline-block');
     });
 
-    $scope.init_map_geo = function(position) {
-        console.log(position.coords.latitude, position.coords.longitude);
-
-        var map_geo = new naver.maps.Map('map_geo', {
-            center: new naver.maps.LatLng(position.coords.latitude, position.coords.longitude),
-            zoom: 10
-        });
-
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(position.coords.latitude, position.coords.longitude),
-            map: map_geo
-        });
-    };
-
     $scope.init_map_cluster = function() {
         new MapWrap();
     };
@@ -46,14 +32,6 @@ app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $
         console.log(mapUrl);
         jQuery.getScript(mapUrl, function() {
             $scope.init_map_cluster();
-
-            if ('geolocation' in navigator) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    $scope.init_map_geo(position);
-                });
-            } else {
-                alert('이 브라우저는 Geolocation을 지원하지 않습니다');
-            }
         });
     };
 
