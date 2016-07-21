@@ -7,6 +7,10 @@ node_modules
 /css/.DS_Store
 img/.DS_Store
 /app/api/migrations
+/app/api/static/assets
+/app/api/static/img
+/app/api/static/bootstrap
+/app/api/static/ui
 *.pyc
 *.log
 setup/nohup.out
