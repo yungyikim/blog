@@ -268,9 +268,9 @@ MapWrap.prototype = {
                 title: 'Green',
                 icon: {
                     content: [
-                                '<div class="c-marker"><div class="inner"><b>',
+                                '<div class="c-marker"><div class="inner"><div class="count"><b>',
                                 store[i].length,
-                                '</b></div></div>'
+                                '</b></div></div></div>'
                             ].join(''),
                     size: new naver.maps.Size(38, 58),
                     anchor: new naver.maps.Point(19, 58),
@@ -412,9 +412,9 @@ function drawCircles(store, boundsList) {
             title: 'Green',
             icon: {
                 content: [
-                            '<div class="c-marker"><div class="inner"><b>',
+                            '<div class="c-marker"><div class="inner"><div class="count"><b>',
                             store[i].length,
-                            '</b></div></div>'
+                            '</b></div></div></div>'
                         ].join(''),
                 size: new naver.maps.Size(38, 58),
                 anchor: new naver.maps.Point(19, 58),

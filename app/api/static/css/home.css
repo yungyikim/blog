@@ -197,6 +197,9 @@ main section.map-wrap {
     height: 34px;
     border-radius: 34px;
     border: 2px solid #fff;
+}
+
+.c-marker .inner .count {
     padding-top: 5px;
 }
 
